@@ -60,7 +60,7 @@ class TrackingScreen extends StatelessWidget {
                                   horizontal: 26, vertical: 15),
                               decoration: BoxDecoration(
                                 color: AppColors.mint,
-                                borderRadius: BorderRadius.circular(16),
+                                borderRadius: BorderRadius.circular(22),
                                 border: Border.all(
                                     color:
                                         AppColors.teal.withValues(alpha: .15)),
@@ -69,7 +69,7 @@ class TrackingScreen extends StatelessWidget {
                                 order.queueNumber,
                                 style: const TextStyle(
                                     color: AppColors.tealDark,
-                                    fontWeight: FontWeight.w900,
+                                    fontWeight: FontWeight.w700,
                                     fontSize: 43,
                                     letterSpacing: 1.2),
                               ),
@@ -89,7 +89,7 @@ class TrackingScreen extends StatelessWidget {
                                     text: '± ${order.estimateMinutes} menit',
                                     style: const TextStyle(
                                         color: AppColors.navy,
-                                        fontWeight: FontWeight.w900,
+                                        fontWeight: FontWeight.w700,
                                         fontSize: 17),
                                   ),
                                 ],
@@ -104,7 +104,7 @@ class TrackingScreen extends StatelessWidget {
                               app.statusLabel,
                               style: const TextStyle(
                                   color: AppColors.tealDark,
-                                  fontWeight: FontWeight.w900),
+                                  fontWeight: FontWeight.w700),
                             ),
                           ],
                         ),
@@ -122,7 +122,7 @@ class TrackingScreen extends StatelessWidget {
                                 children: [
                                   Text(mitra.name,
                                       style: const TextStyle(
-                                          fontWeight: FontWeight.w900,
+                                          fontWeight: FontWeight.w700,
                                           color: AppColors.navy,
                                           fontSize: 15)),
                                   const SizedBox(height: 4),
@@ -145,12 +145,11 @@ class TrackingScreen extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         color: AppColors.teal
                                             .withValues(alpha: .10),
-                                        borderRadius:
-                                            BorderRadius.circular(99)),
+                                        borderRadius: BorderRadius.circular(7)),
                                     child: const Text('Mitra Terverifikasi',
                                         style: TextStyle(
                                             color: AppColors.teal,
-                                            fontWeight: FontWeight.w900,
+                                            fontWeight: FontWeight.w700,
                                             fontSize: 10.5)),
                                   ),
                                 ],

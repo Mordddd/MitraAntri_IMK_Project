@@ -32,34 +32,44 @@ class _PrimaryButtonState extends State<PrimaryButton> {
     final child = AnimatedContainer(
       duration:
           reduceMotion ? Duration.zero : const Duration(milliseconds: 180),
-      curve: Curves.easeOutCubic,
+      curve: Curves.easeOutQuart,
       height: widget.height,
       width: widget.fullWidth ? double.infinity : null,
-      padding: const EdgeInsets.symmetric(horizontal: 18),
+      padding: const EdgeInsets.fromLTRB(22, 0, 8, 0),
       decoration: BoxDecoration(
         color: isDisabled ? AppColors.lightGrey : AppColors.primary,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(widget.height / 2),
       ),
       child: Row(
         mainAxisSize: widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (widget.icon != null) ...[
-            Icon(
-              widget.icon,
-              color: isDisabled ? AppColors.subtext : Colors.white,
-              size: 20,
+          Expanded(
+            child: Text(
+              widget.text,
+              maxLines: 1,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: isDisabled ? AppColors.subtext : Colors.white,
+                fontWeight: FontWeight.w700,
+                fontSize: 15,
+              ),
             ),
-            const SizedBox(width: 8),
-          ],
-          Text(
-            widget.text,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
+          ),
+          Container(
+            width: widget.height - 16,
+            height: widget.height - 16,
+            decoration: BoxDecoration(
+              color: isDisabled
+                  ? Colors.transparent
+                  : Colors.white.withValues(alpha: .14),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              widget.icon ?? Icons.arrow_forward_rounded,
               color: isDisabled ? AppColors.subtext : Colors.white,
-              fontWeight: FontWeight.w800,
-              fontSize: 15,
+              size: 19,
             ),
           ),
         ],
@@ -73,14 +83,14 @@ class _PrimaryButtonState extends State<PrimaryButton> {
         scale: _pressed && !reduceMotion ? 0.98 : 1,
         duration:
             reduceMotion ? Duration.zero : const Duration(milliseconds: 120),
-        curve: Curves.easeOut,
+        curve: Curves.easeOutQuart,
         child: Material(
           color: Colors.transparent,
           child: InkWell(
             onTap: widget.onPressed,
             onHighlightChanged:
                 isDisabled ? null : (value) => setState(() => _pressed = value),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(widget.height / 2),
             child: child,
           ),
         ),

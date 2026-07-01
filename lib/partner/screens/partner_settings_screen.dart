@@ -15,14 +15,14 @@ class PartnerSettingsScreen extends StatelessWidget {
       backgroundColor: AppColors.bg,
       appBar: AppBar(title: const Text('Pengaturan')),
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
         children: [
           _SettingsCard(
             children: [
               SwitchListTile(
                 title: const Text(
                   'Notifikasi',
-                  style: TextStyle(fontWeight: FontWeight.w800),
+                  style: TextStyle(fontWeight: FontWeight.w700),
                 ),
                 subtitle: const Text('Terima notifikasi pesanan baru'),
                 value: partner.notificationsEnabled,
@@ -32,10 +32,10 @@ class PartnerSettingsScreen extends StatelessWidget {
               const Divider(height: 1),
               const SwitchListTile(
                 title: Text(
-                  'Mode Gelap',
-                  style: TextStyle(fontWeight: FontWeight.w800),
+                  'Tema aplikasi',
+                  style: TextStyle(fontWeight: FontWeight.w700),
                 ),
-                subtitle: Text('Segera hadir'),
+                subtitle: Text('Tema warm cream aktif'),
                 value: false,
                 activeThumbColor: AppColors.primary,
                 onChanged: null,
@@ -49,12 +49,12 @@ class PartnerSettingsScreen extends StatelessWidget {
                 leading: Icon(Icons.language_rounded),
                 title: Text(
                   'Bahasa',
-                  style: TextStyle(fontWeight: FontWeight.w800),
+                  style: TextStyle(fontWeight: FontWeight.w700),
                 ),
                 subtitle: Text('Pilihan bahasa lain segera hadir'),
                 trailing: Text(
                   'Indonesia',
-                  style: TextStyle(fontWeight: FontWeight.w800),
+                  style: TextStyle(fontWeight: FontWeight.w700),
                 ),
               ),
             ],
@@ -105,9 +105,10 @@ class _SettingsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: AppColors.border),
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: Colors.white70),
+        boxShadow: AppColors.cardShadow,
       ),
       child: Column(children: children),
     );
@@ -129,7 +130,7 @@ class _LinkTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Icon(icon, color: AppColors.navy),
-      title: Text(label, style: const TextStyle(fontWeight: FontWeight.w800)),
+      title: Text(label, style: const TextStyle(fontWeight: FontWeight.w700)),
       trailing: const Icon(Icons.chevron_right_rounded),
       onTap: onTap,
     );

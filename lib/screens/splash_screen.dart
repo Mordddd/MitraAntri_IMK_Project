@@ -24,7 +24,10 @@ class _SplashScreenState extends State<SplashScreen>
       vsync: this,
       duration: const Duration(milliseconds: 600),
     );
-    _fadeAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeIn);
+    _fadeAnimation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeOutQuart,
+    );
     _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
       CurvedAnimation(parent: _controller, curve: Curves.elasticOut),
     );
@@ -69,12 +72,13 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
                 const SizedBox(height: 36),
-                SizedBox(
-                  width: 28,
-                  height: 28,
-                  child: const CircularProgressIndicator(
-                    strokeWidth: 2.5,
+                const SizedBox(
+                  width: 88,
+                  child: LinearProgressIndicator(
+                    minHeight: 3,
+                    borderRadius: BorderRadius.all(Radius.circular(3)),
                     color: AppColors.primary,
+                    backgroundColor: AppColors.shell,
                   ),
                 ),
               ],

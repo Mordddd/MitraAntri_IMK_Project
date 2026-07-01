@@ -22,16 +22,17 @@ class FormTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(18),
+      color: AppColors.card,
+      borderRadius: BorderRadius.circular(24),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(24),
         child: Container(
-          padding: const EdgeInsets.all(14),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
-            border: Border.all(color: AppColors.border),
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(color: Colors.white.withValues(alpha: .72)),
+            boxShadow: AppColors.cardShadow,
           ),
           child: Row(
             children: [
@@ -39,8 +40,8 @@ class FormTile extends StatelessWidget {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: AppColors.softBlue,
-                  borderRadius: BorderRadius.circular(14),
+                  color: AppColors.mint,
+                  borderRadius: BorderRadius.circular(15),
                 ),
                 child: Icon(icon, color: AppColors.teal, size: 21),
               ),
@@ -53,13 +54,13 @@ class FormTile extends StatelessWidget {
                         style: const TextStyle(
                             color: AppColors.subtext,
                             fontSize: 11,
-                            fontWeight: FontWeight.w700)),
+                            fontWeight: FontWeight.w500)),
                     const SizedBox(height: 3),
                     Text(value,
                         style: const TextStyle(
                             color: AppColors.navy,
                             fontSize: 13.5,
-                            fontWeight: FontWeight.w900)),
+                            fontWeight: FontWeight.w700)),
                     if (subtitle != null) ...[
                       const SizedBox(height: 2),
                       Text(subtitle!,

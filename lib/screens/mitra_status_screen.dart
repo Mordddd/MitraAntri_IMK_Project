@@ -12,9 +12,8 @@ class MitraStatusScreen extends StatelessWidget {
     return Scaffold(
       appBar: TopAppBar(title: 'Status Mitra'),
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
         children: [
-          // Profile card
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -24,13 +23,12 @@ class MitraStatusScreen extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Profile photo
                       Container(
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
                           color: AppColors.teal.withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(24),
                         ),
                         child: const Icon(
                           Icons.person_rounded,
@@ -103,21 +101,20 @@ class MitraStatusScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-
-          // Status toggle
           Text(
-            'Status Ketersediaan',
+            'Status ketersediaan',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                 ),
           ),
           const SizedBox(height: 12),
-
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey[300]!),
-              borderRadius: BorderRadius.circular(12),
+              color: AppColors.card,
+              border: Border.all(color: Colors.white70),
+              borderRadius: BorderRadius.circular(24),
+              boxShadow: AppColors.cardShadow,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -152,16 +149,13 @@ class MitraStatusScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-
-          // Statistics
           Text(
-            'Statistik Hari Ini',
+            'Statistik hari ini',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                 ),
           ),
           const SizedBox(height: 12),
-
           Row(
             children: [
               Expanded(
@@ -183,7 +177,6 @@ class MitraStatusScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-
           Row(
             children: [
               Expanded(
@@ -224,20 +217,22 @@ class _StatusToggleState extends State<_StatusToggle> {
     return GestureDetector(
       onTap: () => AppScope.read(context).toggleOnlineStatus(),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 520),
+        curve: Curves.easeOutQuart,
         width: 120,
         height: 40,
         padding: const EdgeInsets.symmetric(horizontal: 6),
         decoration: BoxDecoration(
           color: isOnline ? AppColors.primary : const Color(0xFF374151),
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: AppColors.border),
+          border: Border.all(color: Colors.white24),
         ),
         child: Stack(
           alignment: Alignment.center,
           children: [
             AnimatedAlign(
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 520),
+              curve: Curves.easeOutQuart,
               alignment:
                   isOnline ? Alignment.centerRight : Alignment.centerLeft,
               child: Container(
@@ -259,7 +254,7 @@ class _StatusToggleState extends State<_StatusToggle> {
                         ? Colors.white.withValues(alpha: 0.5)
                         : Colors.white,
                     fontSize: 10,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 Text(
@@ -269,7 +264,7 @@ class _StatusToggleState extends State<_StatusToggle> {
                         ? Colors.white
                         : Colors.white.withValues(alpha: 0.5),
                     fontSize: 10,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ],
@@ -299,8 +294,10 @@ class _StatCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey[300]!),
-        borderRadius: BorderRadius.circular(12),
+        color: AppColors.card,
+        border: Border.all(color: Colors.white70),
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: AppColors.cardShadow,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

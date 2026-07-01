@@ -61,7 +61,7 @@ class _PartnerShellScreenState extends State<PartnerShellScreen> {
           _pageController.animateToPage(
             index,
             duration: const Duration(milliseconds: 320),
-            curve: Curves.easeOutCubic,
+            curve: Curves.easeOutQuart,
           );
         },
       ),

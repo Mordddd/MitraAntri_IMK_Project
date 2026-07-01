@@ -4,6 +4,7 @@ import '../core/app_colors.dart';
 import '../core/app_routes.dart';
 import '../utils/snackbar_helper.dart';
 import '../widgets/primary_button.dart';
+import '../widgets/top_app_bar.dart';
 import '../models/hospital.dart';
 
 class HospitalDetailsScreen extends StatefulWidget {
@@ -23,37 +24,30 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
     final hospital = widget.hospital;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          hospital.name,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
-        ),
-        backgroundColor: AppColors.primary,
-        foregroundColor: Colors.white,
-      ),
+      appBar: TopAppBar(title: hospital.name),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 140,
+              height: 168,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: AppColors.primary.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(18),
+                color: AppColors.navy,
+                borderRadius: BorderRadius.circular(30),
               ),
               child: const Icon(
                 Icons.local_hospital_rounded,
                 size: 64,
-                color: AppColors.primary,
+                color: Colors.white70,
               ),
             ),
             const SizedBox(height: 16),
             Text(
               hospital.name,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w700,
                   ),
             ),
             const SizedBox(height: 8),
@@ -84,9 +78,9 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
             ),
             const SizedBox(height: 24),
             Text(
-              'Pilih Layanan',
+              'Pilih layanan',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w700,
                   ),
             ),
             const SizedBox(height: 12),
@@ -102,10 +96,10 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                     decoration: BoxDecoration(
                       color: selected
                           ? AppColors.primary.withValues(alpha: 0.08)
-                          : Colors.white,
-                      borderRadius: BorderRadius.circular(16),
+                          : AppColors.card,
+                      borderRadius: BorderRadius.circular(22),
                       border: Border.all(
-                        color: selected ? AppColors.primary : AppColors.border,
+                        color: selected ? AppColors.primary : Colors.white70,
                         width: selected ? 2 : 1,
                       ),
                       boxShadow: selected ? AppColors.cardShadow : null,
@@ -120,7 +114,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                         Expanded(
                           child: Text(
                             service,
-                            style: const TextStyle(fontWeight: FontWeight.w800),
+                            style: const TextStyle(fontWeight: FontWeight.w600),
                           ),
                         ),
                         if (selected)
@@ -139,7 +133,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
         padding: const EdgeInsets.all(16),
         child: SafeArea(
           child: PrimaryButton(
-            text: 'Order Partner',
+            text: 'Pesan mitra rumah sakit',
             icon: Icons.person_search_rounded,
             onPressed: _selectedService == null
                 ? null

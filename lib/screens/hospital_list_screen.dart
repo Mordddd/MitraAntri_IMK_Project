@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../core/app_colors.dart';
-import '../core/app_routes.dart'; // -> Pastikan import ini ditambahkan
+import '../core/app_routes.dart';
 import '../data/dummy_data.dart';
 import '../models/hospital.dart';
 import '../widgets/top_app_bar.dart';
@@ -44,16 +44,32 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopAppBar(title: 'Rumah Sakit di Jabodetabek'),
+      appBar: TopAppBar(title: 'Layanan rumah sakit'),
       body: Column(
         children: [
-          // Search bar
+          const Padding(
+            padding: EdgeInsets.fromLTRB(20, 8, 20, 4),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Keperluan selesai.\nAnda tetap tenang.',
+                maxLines: 2,
+                style: TextStyle(
+                  color: AppColors.navy,
+                  fontSize: 30,
+                  height: 1.06,
+                  letterSpacing: -.9,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+          ),
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.fromLTRB(20, 18, 20, 14),
             child: TextField(
               controller: _searchController,
               decoration: InputDecoration(
-                hintText: 'Cari rumah sakit...',
+                hintText: 'Cari rumah sakit atau wilayah',
                 prefixIcon: const Icon(Icons.search),
                 suffixIcon: _searchController.text.isNotEmpty
                     ? IconButton(
@@ -64,15 +80,14 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                       )
                     : null,
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(18),
                   borderSide: const BorderSide(color: AppColors.border),
                 ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               ),
             ),
           ),
-          
-          // Hospital list
           Expanded(
             child: _filteredHospitals.isEmpty
                 ? Center(
@@ -93,14 +108,13 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                     ),
                   )
                 : ListView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 28),
                     itemCount: _filteredHospitals.length,
                     itemBuilder: (context, index) {
                       final hospital = _filteredHospitals[index];
                       return _HospitalCard(
                         hospital: hospital,
                         onTap: () {
-                          // FIX: Menggunakan AppRoutes agar sesuai dengan main.dart
                           Navigator.of(context).pushNamed(
                             AppRoutes.hospitalDetails,
                             arguments: hospital,
@@ -131,13 +145,12 @@ class _HospitalCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(26),
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(18),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header with rating
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -147,18 +160,20 @@ class _HospitalCard extends StatelessWidget {
                       children: [
                         Text(
                           hospital.name,
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
                         const SizedBox(height: 4),
                         Text(
                           hospital.district,
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Colors.grey[600],
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: Colors.grey[600],
+                                  ),
                         ),
                       ],
                     ),
@@ -176,9 +191,10 @@ class _HospitalCard extends StatelessWidget {
                           const SizedBox(width: 4),
                           Text(
                             hospital.rating.toString(),
-                            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style:
+                                Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
                           ),
                         ],
                       ),
@@ -187,8 +203,6 @@ class _HospitalCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 12),
-
-              // Address
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -209,8 +223,6 @@ class _HospitalCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 12),
-
-              // Departments as chips
               Wrap(
                 spacing: 8,
                 runSpacing: 8,
@@ -219,18 +231,21 @@ class _HospitalCard extends StatelessWidget {
                     label: Text(dept),
                     labelStyle: Theme.of(context).textTheme.labelSmall,
                     backgroundColor: AppColors.teal.withValues(alpha: 0.1),
+                    side: BorderSide.none,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   );
                 }).toList(),
               ),
-              
               if (hospital.departments.length > 3)
                 Padding(
                   padding: const EdgeInsets.only(top: 8),
                   child: Text(
                     '+${hospital.departments.length - 3} lainnya',
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      color: AppColors.teal,
-                    ),
+                          color: AppColors.teal,
+                        ),
                   ),
                 ),
             ],

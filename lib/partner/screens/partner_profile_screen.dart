@@ -22,9 +22,13 @@ class PartnerProfileScreen extends StatelessWidget {
           children: [
             Hero(
               tag: 'partner_avatar',
-              child: CircleAvatar(
-                radius: 50,
-                backgroundColor: AppColors.primary.withValues(alpha: 0.15),
+              child: Container(
+                width: 104,
+                height: 104,
+                decoration: BoxDecoration(
+                  color: AppColors.primary.withValues(alpha: .14),
+                  borderRadius: BorderRadius.circular(32),
+                ),
                 child: const Icon(
                   Icons.person_rounded,
                   size: 50,
@@ -37,7 +41,7 @@ class PartnerProfileScreen extends StatelessWidget {
               driver.name,
               style: const TextStyle(
                 fontSize: 22,
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w700,
                 color: AppColors.navy,
               ),
             ),
@@ -52,7 +56,7 @@ class PartnerProfileScreen extends StatelessWidget {
                   '${driver.rating} • ${driver.completedOrders} pesanan selesai',
                   style: const TextStyle(
                     color: AppColors.subtext,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ],
@@ -112,14 +116,14 @@ class PartnerProfileScreen extends StatelessWidget {
                   'Keluar',
                   style: TextStyle(
                     color: AppColors.danger,
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 style: OutlinedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   side: const BorderSide(color: AppColors.danger),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(24),
                   ),
                 ),
               ),
@@ -148,9 +152,10 @@ class _ProfileTile extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: AppColors.border),
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: Colors.white70),
+        boxShadow: AppColors.cardShadow,
       ),
       child: Row(
         children: [
@@ -165,13 +170,13 @@ class _ProfileTile extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 11,
                     color: AppColors.subtext,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 Text(
                   value,
                   style: const TextStyle(
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w700,
                     color: AppColors.navy,
                   ),
                 ),
@@ -199,14 +204,15 @@ class _MenuTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(18),
+      borderRadius: BorderRadius.circular(22),
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: AppColors.border),
+          color: AppColors.card,
+          borderRadius: BorderRadius.circular(22),
+          border: Border.all(color: Colors.white70),
+          boxShadow: AppColors.cardShadow,
         ),
         child: Row(
           children: [
@@ -216,7 +222,7 @@ class _MenuTile extends StatelessWidget {
               child: Text(
                 label,
                 style: const TextStyle(
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w700,
                   color: AppColors.navy,
                 ),
               ),

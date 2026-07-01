@@ -42,10 +42,27 @@ class _PublicServiceScreenState extends State<PublicServiceScreen> {
         : null;
 
     return Scaffold(
-      appBar: TopAppBar(title: 'Public Service'),
+      appBar: TopAppBar(title: 'Layanan publik'),
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
         children: [
+          const Text(
+            'Urus dokumen,\ntanpa kehilangan hari.',
+            maxLines: 2,
+            style: TextStyle(
+              color: AppColors.navy,
+              fontSize: 30,
+              height: 1.06,
+              letterSpacing: -.9,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: 10),
+          const Text(
+            'Temukan kantor tujuan dan pilih keperluan Anda.',
+            style: TextStyle(color: AppColors.subtext),
+          ),
+          const SizedBox(height: 22),
           TextField(
             controller: _searchController,
             onChanged: (_) => setState(() {}),
@@ -59,9 +76,9 @@ class _PublicServiceScreenState extends State<PublicServiceScreen> {
           ),
           const SizedBox(height: 16),
           Text(
-            'Locations',
+            'Lokasi layanan',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                 ),
           ),
           const SizedBox(height: 12),
@@ -80,10 +97,10 @@ class _PublicServiceScreenState extends State<PublicServiceScreen> {
                   decoration: BoxDecoration(
                     color: isSelected
                         ? AppColors.primary.withValues(alpha: 0.08)
-                        : Colors.white,
-                    borderRadius: BorderRadius.circular(16),
+                        : AppColors.card,
+                    borderRadius: BorderRadius.circular(22),
                     border: Border.all(
-                      color: isSelected ? AppColors.primary : AppColors.border,
+                      color: isSelected ? AppColors.primary : Colors.white70,
                       width: isSelected ? 2 : 1,
                     ),
                   ),
@@ -99,7 +116,7 @@ class _PublicServiceScreenState extends State<PublicServiceScreen> {
                             Text(
                               location.name,
                               style: const TextStyle(
-                                fontWeight: FontWeight.w900,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
                             Text(
@@ -121,9 +138,9 @@ class _PublicServiceScreenState extends State<PublicServiceScreen> {
           if (selectedLocationData != null) ...[
             const SizedBox(height: 16),
             Text(
-              'Service Types',
+              'Jenis keperluan',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w700,
                   ),
             ),
             const SizedBox(height: 12),
@@ -139,11 +156,10 @@ class _PublicServiceScreenState extends State<PublicServiceScreen> {
                     decoration: BoxDecoration(
                       color: isSelected
                           ? AppColors.primary.withValues(alpha: 0.08)
-                          : Colors.white,
-                      borderRadius: BorderRadius.circular(16),
+                          : AppColors.card,
+                      borderRadius: BorderRadius.circular(22),
                       border: Border.all(
-                        color:
-                            isSelected ? AppColors.primary : AppColors.border,
+                        color: isSelected ? AppColors.primary : Colors.white70,
                       ),
                     ),
                     child: Row(
@@ -151,7 +167,7 @@ class _PublicServiceScreenState extends State<PublicServiceScreen> {
                         Expanded(
                           child: Text(
                             typeName,
-                            style: const TextStyle(fontWeight: FontWeight.w800),
+                            style: const TextStyle(fontWeight: FontWeight.w600),
                           ),
                         ),
                         if (isSelected)
@@ -168,7 +184,7 @@ class _PublicServiceScreenState extends State<PublicServiceScreen> {
               controller: _budgetController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                labelText: 'Budget Input',
+                labelText: 'Batas anggaran',
                 prefixIcon: const Icon(Icons.attach_money_rounded),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -182,7 +198,7 @@ class _PublicServiceScreenState extends State<PublicServiceScreen> {
         padding: const EdgeInsets.all(16),
         child: SafeArea(
           child: PrimaryButton(
-            text: 'Order Partner',
+            text: 'Pesan mitra layanan',
             icon: Icons.person_search_rounded,
             onPressed: _selectedLocation != null && _selectedService != null
                 ? () => SnackbarHelper.orderCreated(context)

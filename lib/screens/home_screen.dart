@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
         child: SafeArea(
           bottom: false,
           child: SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(20, 16, 20, 28),
+            padding: const EdgeInsets.fromLTRB(20, 18, 20, 36),
             child: Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 760),
@@ -50,25 +50,42 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 28),
+                    const SizedBox(height: 42),
                     FadeSlideIn(
                       delay: const Duration(milliseconds: 40),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Halo, Ardi',
-                            style: Theme.of(context).textTheme.headlineSmall,
+                          Text.rich(
+                            const TextSpan(
+                              children: [
+                                TextSpan(text: 'Waktu Anda untuk '),
+                                TextSpan(
+                                  text: 'hal yang penting.',
+                                  style: TextStyle(
+                                    color: AppColors.primaryDark,
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            style: Theme.of(context).textTheme.headlineLarge,
+                            maxLines: 3,
                           ),
-                          const SizedBox(height: 5),
+                          const SizedBox(height: 12),
                           const Text(
-                            'Apa yang bisa kami bantu hari ini?',
-                            style: TextStyle(color: AppColors.subtext),
+                            'Halo, Ardi. Serahkan antreannya kepada mitra kami.',
+                            style: TextStyle(
+                              color: AppColors.subtext,
+                              fontSize: 15,
+                              height: 1.45,
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 26),
                     FadeSlideIn(
                       delay: const Duration(milliseconds: 80),
                       child: _PrimaryAction(
@@ -77,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     if (app.hasOrder) ...[
-                      const SizedBox(height: 28),
+                      const SizedBox(height: 36),
                       const SectionHeader(title: 'Pesanan aktif'),
                       const SizedBox(height: 12),
                       FadeSlideIn(
@@ -93,29 +110,48 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ],
-                    const SizedBox(height: 28),
-                    const SectionHeader(title: 'Pilih layanan'),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 42),
+                    const SectionHeader(title: 'Layanan untuk hari ini'),
+                    const SizedBox(height: 16),
                     FadeSlideIn(
                       delay: const Duration(milliseconds: 140),
-                      child: GridView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: DummyData.categories.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: isWide ? 3 : 2,
-                          childAspectRatio: isWide ? 1.45 : 1.25,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                        ),
-                        itemBuilder: (context, index) {
-                          final category = DummyData.categories[index];
-                          return CategoryCard(
-                            category: category,
-                            onTap: () =>
-                                Navigator.pushNamed(context, category.route),
-                          );
-                        },
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: isWide ? 164 : 148,
+                            child: CategoryCard(
+                              category: DummyData.categories.first,
+                              featured: true,
+                              onTap: () => Navigator.pushNamed(
+                                context,
+                                DummyData.categories.first.route,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: DummyData.categories.length - 1,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: isWide ? 4 : 2,
+                              childAspectRatio: isWide ? 1.2 : 1.05,
+                              crossAxisSpacing: 12,
+                              mainAxisSpacing: 12,
+                            ),
+                            itemBuilder: (context, index) {
+                              final category = DummyData.categories[index + 1];
+                              return CategoryCard(
+                                category: category,
+                                onTap: () => Navigator.pushNamed(
+                                  context,
+                                  category.route,
+                                ),
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -138,66 +174,83 @@ class _PrimaryAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppCard(
       onTap: onTap,
-      color: AppColors.primary,
-      borderColor: AppColors.primary,
-      padding: const EdgeInsets.all(20),
-      child: Row(
+      color: AppColors.navy,
+      borderColor: AppColors.navy2,
+      radius: 30,
+      padding: EdgeInsets.zero,
+      child: Stack(
         children: [
-          Expanded(
+          Positioned(
+            right: -38,
+            top: -46,
+            child: Container(
+              width: 150,
+              height: 150,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.primary.withValues(alpha: .42),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(24, 26, 22, 22),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Antrean selesai tanpa menunggu',
+                  'Kami yang mengantre.\nAnda tetap melaju.',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w900,
-                    height: 1.18,
+                    fontSize: 26,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: -0.7,
+                    height: 1.08,
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 12),
                 Text(
-                  'Pilih layanan, mitra kami yang antre untuk Anda.',
+                  'Pilih tujuan, atur jadwal, lalu pantau prosesnya langsung.',
                   style: TextStyle(
-                    color: Colors.white.withValues(alpha: .8),
-                    fontSize: 13,
-                    height: 1.35,
+                    color: Colors.white.withValues(alpha: .68),
+                    fontSize: 14,
+                    height: 1.45,
                   ),
                 ),
-                const SizedBox(height: 18),
-                const Row(
+                const SizedBox(height: 24),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      'Pesan Mitra Sekarang',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w900,
+                    Container(
+                      padding: const EdgeInsets.fromLTRB(18, 10, 6, 10),
+                      decoration: BoxDecoration(
+                        color: AppColors.card,
+                        borderRadius: BorderRadius.circular(30),
                       ),
-                    ),
-                    SizedBox(width: 7),
-                    Icon(
-                      Icons.arrow_forward_rounded,
-                      color: Colors.white,
-                      size: 18,
+                      child: const Row(
+                        children: [
+                          Text(
+                            'Pesan Mitra Sekarang',
+                            style: TextStyle(
+                              color: AppColors.navy,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          SizedBox(width: 12),
+                          CircleAvatar(
+                            radius: 16,
+                            backgroundColor: AppColors.primary,
+                            child: Icon(
+                              Icons.arrow_outward_rounded,
+                              color: Colors.white,
+                              size: 17,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ],
-            ),
-          ),
-          const SizedBox(width: 16),
-          Container(
-            width: 58,
-            height: 58,
-            decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: .12),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: const Icon(
-              Icons.schedule_rounded,
-              color: Colors.white,
-              size: 29,
             ),
           ),
         ],
@@ -292,9 +345,9 @@ class _IconAction extends StatelessWidget {
       tooltip: tooltip,
       onPressed: onTap,
       style: IconButton.styleFrom(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.card,
         foregroundColor: AppColors.navy,
-        side: const BorderSide(color: AppColors.border),
+        side: BorderSide(color: Colors.white.withValues(alpha: .8)),
         minimumSize: const Size(44, 44),
       ),
       icon: Icon(icon),

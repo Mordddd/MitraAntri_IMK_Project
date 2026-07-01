@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mitra_antri_mockup/main.dart';
+import 'package:mitra_antri_mockup/core/app_theme.dart';
+import 'package:mitra_antri_mockup/screens/event_ticket_screen.dart';
 
 void main() {
   Future<void> reachLogin(WidgetTester tester) async {
@@ -43,5 +45,18 @@ void main() {
     expect(find.text('Dashboard Mitra'), findsOneWidget);
     expect(find.text('Permintaan Masuk'), findsOneWidget);
     expect(find.text('Pesan Mitra Sekarang'), findsNothing);
+  });
+
+  testWidgets('event catalog renders bundled artwork', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(),
+        home: const EventTicketScreen(),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('We The Fest'), findsOneWidget);
+    expect(find.byType(Image), findsWidgets);
   });
 }

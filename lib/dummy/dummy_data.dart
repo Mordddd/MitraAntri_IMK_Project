@@ -391,7 +391,7 @@ class DummyData {
       name: 'We The Fest',
       date: DateTime(2026, 8, 15),
       venue: 'JIExpo Kemayoran, Jakarta',
-      posterUrl: '',
+      posterUrl: 'assets/images/events/festival-daylight.jpg',
       services: const [
         EventService(
           id: 'evt_wtf_ticket',
@@ -428,7 +428,7 @@ class DummyData {
       name: 'Java Jazz',
       date: DateTime(2026, 3, 1),
       venue: 'JIExpo Kemayoran, Jakarta',
-      posterUrl: '',
+      posterUrl: 'assets/images/events/jazz-stage.jpg',
       services: const [
         EventService(
           id: 'evt_jazz_ticket',
@@ -451,7 +451,7 @@ class DummyData {
       name: 'Pestapora',
       date: DateTime(2026, 9, 20),
       venue: 'Gambir Expo, Jakarta',
-      posterUrl: '',
+      posterUrl: 'assets/images/events/festival-daylight.jpg',
       services: const [
         EventService(
           id: 'evt_pesta_merch',
@@ -467,7 +467,7 @@ class DummyData {
       name: 'DWP',
       date: DateTime(2026, 12, 10),
       venue: 'JIExpo Kemayoran, Jakarta',
-      posterUrl: '',
+      posterUrl: 'assets/images/events/electronic-night.jpg',
       services: const [
         EventService(
           id: 'evt_dwp_ticket',
@@ -483,7 +483,7 @@ class DummyData {
       name: 'Hammersonic',
       date: DateTime(2026, 5, 17),
       venue: 'Gelora Bung Karno, Jakarta',
-      posterUrl: '',
+      posterUrl: 'assets/images/events/rock-stage.jpg',
       services: const [
         EventService(
           id: 'evt_hammer_ticket',

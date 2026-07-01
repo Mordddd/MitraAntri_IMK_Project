@@ -18,8 +18,7 @@ class InfoChip extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
       decoration: BoxDecoration(
         color: color.withValues(alpha: .10),
-        borderRadius: BorderRadius.circular(99),
-        border: Border.all(color: color.withValues(alpha: .18)),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -28,7 +27,7 @@ class InfoChip extends StatelessWidget {
           const SizedBox(width: 6),
           Text(label,
               style: TextStyle(
-                  color: color, fontWeight: FontWeight.w800, fontSize: 11)),
+                  color: color, fontWeight: FontWeight.w600, fontSize: 11)),
         ],
       ),
     );

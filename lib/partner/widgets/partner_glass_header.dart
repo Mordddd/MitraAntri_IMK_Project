@@ -18,11 +18,12 @@ class PartnerGlassHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 4, 16, 0),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: AppColors.border),
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(30),
+        border: Border.all(color: Colors.white.withValues(alpha: .72)),
+        boxShadow: AppColors.cardShadow,
       ),
       child: Column(
         children: [
@@ -30,9 +31,13 @@ class PartnerGlassHeader extends StatelessWidget {
             children: [
               Hero(
                 tag: 'partner_avatar',
-                child: CircleAvatar(
-                  radius: 30,
-                  backgroundColor: AppColors.primary.withValues(alpha: 0.15),
+                child: Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withValues(alpha: 0.13),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                   child: const Icon(
                     Icons.person_rounded,
                     size: 34,
@@ -49,7 +54,7 @@ class PartnerGlassHeader extends StatelessWidget {
                       driver.name,
                       style: const TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.w900,
+                        fontWeight: FontWeight.w700,
                         color: AppColors.navy,
                       ),
                     ),
@@ -65,7 +70,7 @@ class PartnerGlassHeader extends StatelessWidget {
                         Text(
                           driver.rating.toStringAsFixed(1),
                           style: const TextStyle(
-                            fontWeight: FontWeight.w800,
+                            fontWeight: FontWeight.w700,
                             color: AppColors.navy,
                             fontSize: 13,
                           ),
@@ -102,7 +107,7 @@ class PartnerGlassHeader extends StatelessWidget {
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
               color: AppColors.primary,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(22),
             ),
             child: Row(
               children: [
@@ -168,7 +173,7 @@ class _MetricColumn extends StatelessWidget {
           style: TextStyle(
             color: Colors.white.withValues(alpha: 0.85),
             fontSize: 11,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w500,
           ),
         ),
         const SizedBox(height: 4),
@@ -177,7 +182,7 @@ class _MetricColumn extends StatelessWidget {
           style: const TextStyle(
             color: Colors.white,
             fontSize: 16,
-            fontWeight: FontWeight.w900,
+            fontWeight: FontWeight.w700,
           ),
         ),
       ],
@@ -204,7 +209,7 @@ class _MiniStat extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
         color: AppColors.lightGrey,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(18),
       ),
       child: Row(
         children: [
@@ -218,7 +223,7 @@ class _MiniStat extends StatelessWidget {
                   label,
                   style: const TextStyle(
                     fontSize: 10,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w500,
                     color: AppColors.subtext,
                   ),
                 ),
@@ -228,7 +233,7 @@ class _MiniStat extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: compact ? 11 : 14,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w700,
                     color: AppColors.navy,
                   ),
                 ),

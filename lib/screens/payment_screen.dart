@@ -194,7 +194,7 @@ class _SummaryRow extends StatelessWidget {
               label,
               style: TextStyle(
                   color: bold ? AppColors.navy : AppColors.subtext,
-                  fontWeight: bold ? FontWeight.w900 : FontWeight.w700,
+                  fontWeight: bold ? FontWeight.w700 : FontWeight.w500,
                   fontSize: bold ? 14 : 12.5),
             ),
           ),
@@ -206,7 +206,7 @@ class _SummaryRow extends StatelessWidget {
               textAlign: TextAlign.right,
               style: TextStyle(
                   color: AppColors.navy,
-                  fontWeight: bold ? FontWeight.w900 : FontWeight.w800,
+                  fontWeight: bold ? FontWeight.w700 : FontWeight.w600,
                   fontSize: bold ? 16 : 12.5),
             ),
           ),

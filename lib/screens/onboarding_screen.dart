@@ -28,30 +28,24 @@ class OnboardingScreen extends StatelessWidget {
                       const AppLogo(),
                       const SizedBox(height: 28),
                       Text(
-                        'Mitra tepercaya untuk\nmengantre, mengurus, dan\nmenghemat waktu Anda.',
+                        'Antrean berjalan.\nHidup Anda juga.',
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              height: 1.42,
-                              fontSize: 22,
-                              fontWeight: FontWeight.w900,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.headlineLarge?.copyWith(
+                                  height: 1.05,
+                                  fontSize: 34,
+                                  letterSpacing: -1,
+                                  fontWeight: FontWeight.w700,
+                                ),
                       ),
-                      const SizedBox(height: 22),
-                      const Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        alignment: WrapAlignment.center,
-                        children: [
-                          _FeaturePill(
-                              icon: Icons.verified_user_rounded,
-                              text: 'Terverifikasi'),
-                          _FeaturePill(
-                              icon: Icons.schedule_rounded,
-                              text: 'Hemat waktu'),
-                          _FeaturePill(
-                              icon: Icons.lock_rounded,
-                              text: 'Pembayaran aman'),
-                        ],
+                      const SizedBox(height: 14),
+                      const Text(
+                        'Mitra terverifikasi menangani antrean, pembelian, dan urusan layanan untuk Anda.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: AppColors.subtext,
+                          height: 1.45,
+                        ),
                       ),
                       const SizedBox(height: 26),
                       const QueueHeroIllustration(height: 230),
@@ -61,7 +55,8 @@ class OnboardingScreen extends StatelessWidget {
                         children: List.generate(3, (index) {
                           final active = index == 0;
                           return AnimatedContainer(
-                            duration: const Duration(milliseconds: 180),
+                            duration: const Duration(milliseconds: 520),
+                            curve: Curves.easeOutQuart,
                             margin: const EdgeInsets.symmetric(horizontal: 4),
                             width: active ? 24 : 8,
                             height: 8,
@@ -94,9 +89,9 @@ class OnboardingScreen extends StatelessWidget {
                         style: OutlinedButton.styleFrom(
                           foregroundColor: AppColors.navy,
                           minimumSize: const Size(double.infinity, 48),
-                          side: const BorderSide(color: AppColors.border),
+                          side: BorderSide.none,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                         ),
                       ),
@@ -107,42 +102,6 @@ class OnboardingScreen extends StatelessWidget {
             },
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _FeaturePill extends StatelessWidget {
-  const _FeaturePill({required this.icon, required this.text});
-  final IconData icon;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(99),
-        border: Border.all(color: AppColors.border),
-        boxShadow: [
-          BoxShadow(
-              color: AppColors.navy.withValues(alpha: .05),
-              blurRadius: 12,
-              offset: const Offset(0, 6))
-        ],
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 16, color: AppColors.teal),
-          const SizedBox(width: 6),
-          Text(text,
-              style: const TextStyle(
-                  color: AppColors.navy,
-                  fontWeight: FontWeight.w800,
-                  fontSize: 11.5)),
-        ],
       ),
     );
   }

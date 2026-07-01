@@ -20,20 +20,24 @@ class DriverProfileScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.all(26),
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: AppColors.border),
+                color: AppColors.card,
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(color: Colors.white70),
+                boxShadow: AppColors.cardShadow,
               ),
               child: Column(
                 children: [
                   Stack(
                     children: [
-                      CircleAvatar(
-                        radius: 52,
-                        backgroundColor:
-                            AppColors.primary.withValues(alpha: 0.12),
+                      Container(
+                        width: 104,
+                        height: 104,
+                        decoration: BoxDecoration(
+                          color: AppColors.primary.withValues(alpha: .12),
+                          borderRadius: BorderRadius.circular(32),
+                        ),
                         child: const Icon(
                           Icons.person_rounded,
                           size: 52,
@@ -59,7 +63,7 @@ class DriverProfileScreen extends StatelessWidget {
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 10,
-                                fontWeight: FontWeight.w800,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
@@ -72,7 +76,7 @@ class DriverProfileScreen extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge
-                        ?.copyWith(fontWeight: FontWeight.w900),
+                        ?.copyWith(fontWeight: FontWeight.w700),
                   ),
                   const SizedBox(height: 8),
                   Row(
@@ -115,7 +119,7 @@ class DriverProfileScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             PrimaryButton(
-              text: 'Contact via WhatsApp',
+              text: 'Hubungi lewat WhatsApp',
               icon: Icons.chat_rounded,
               onPressed: () {
                 SnackbarHelper.show(
@@ -151,9 +155,10 @@ class _InfoCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border),
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: Colors.white70),
+        boxShadow: AppColors.cardShadow,
       ),
       child: Row(
         children: [
@@ -175,7 +180,7 @@ class _InfoCard extends StatelessWidget {
                 Text(
                   value,
                   style: const TextStyle(
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w700,
                     color: AppColors.navy,
                   ),
                 ),

@@ -21,9 +21,13 @@ class DriverChatScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: 48,
-                backgroundColor: AppColors.primary.withValues(alpha: 0.12),
+              Container(
+                width: 104,
+                height: 104,
+                decoration: BoxDecoration(
+                  color: AppColors.primary.withValues(alpha: .12),
+                  borderRadius: BorderRadius.circular(32),
+                ),
                 child: const Icon(
                   Icons.person_rounded,
                   size: 48,
@@ -34,7 +38,7 @@ class DriverChatScreen extends StatelessWidget {
               Text(
                 driver.name,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w700,
                     ),
               ),
               const SizedBox(height: 8),
@@ -47,7 +51,7 @@ class DriverChatScreen extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               PrimaryButton(
-                text: 'Contact via WhatsApp',
+                text: 'Hubungi lewat WhatsApp',
                 icon: Icons.chat_rounded,
                 onPressed: () {
                   SnackbarHelper.show(

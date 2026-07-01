@@ -28,15 +28,15 @@ class OrderHistoryScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 18, 20, 0),
                 child: Text(
-                  'Orders',
-                  style: Theme.of(context).textTheme.headlineSmall,
+                  'Pesanan Anda',
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
             Expanded(
               child: orders.isEmpty
                   ? const Center(child: Text('Belum ada riwayat pesanan'))
                   : ListView.builder(
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
                       itemCount: orders.length,
                       itemBuilder: (context, index) {
                         return _OrderCard(order: orders[index]);
@@ -62,16 +62,17 @@ class _OrderCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: AppColors.border),
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(26),
+        border: Border.all(color: Colors.white.withValues(alpha: .72)),
+        boxShadow: AppColors.cardShadow,
       ),
       child: InkWell(
         onTap: () => Navigator.pushNamed(
           context,
           AppRoutes.driverProfile,
         ),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(26),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -86,13 +87,13 @@ class _OrderCard extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                       color: statusColor.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(18),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
                       order.status.label,
                       style: TextStyle(
                         color: statusColor,
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w600,
                         fontSize: 11,
                       ),
                     ),
@@ -112,7 +113,7 @@ class _OrderCard extends StatelessWidget {
               Text(
                 order.location,
                 style: const TextStyle(
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                   fontSize: 16,
                   color: AppColors.navy,
                 ),
@@ -134,7 +135,7 @@ class _OrderCard extends StatelessWidget {
                   Text(
                     CurrencyFormatter.rupiah(order.totalPayment),
                     style: const TextStyle(
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w700,
                       color: AppColors.primary,
                     ),
                   ),

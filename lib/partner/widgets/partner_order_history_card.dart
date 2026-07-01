@@ -48,14 +48,15 @@ class PartnerOrderHistoryCard extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(18),
+      borderRadius: BorderRadius.circular(24),
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: AppColors.border),
+          color: AppColors.card,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(color: Colors.white70),
+          boxShadow: AppColors.cardShadow,
         ),
         child: Row(
           children: [
@@ -82,7 +83,7 @@ class PartnerOrderHistoryCard extends StatelessWidget {
                         child: Text(
                           order.serviceType,
                           style: const TextStyle(
-                            fontWeight: FontWeight.w900,
+                            fontWeight: FontWeight.w700,
                             fontSize: 14,
                             color: AppColors.navy,
                           ),
@@ -91,7 +92,7 @@ class PartnerOrderHistoryCard extends StatelessWidget {
                       Text(
                         CurrencyFormatter.rupiah(order.price),
                         style: const TextStyle(
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.w700,
                           fontSize: 14,
                           color: AppColors.primary,
                         ),
@@ -103,7 +104,7 @@ class PartnerOrderHistoryCard extends StatelessWidget {
                     order.customerName,
                     style: const TextStyle(
                       fontSize: 12,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w500,
                       color: AppColors.subtext,
                     ),
                   ),
@@ -132,14 +133,14 @@ class PartnerOrderHistoryCard extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           color: _statusColor.withValues(alpha: 0.12),
-                          borderRadius: BorderRadius.circular(99),
+                          borderRadius: BorderRadius.circular(7),
                         ),
                         child: Text(
                           order.statusLabel,
                           style: TextStyle(
                             color: _statusColor,
                             fontSize: 10,
-                            fontWeight: FontWeight.w900,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),

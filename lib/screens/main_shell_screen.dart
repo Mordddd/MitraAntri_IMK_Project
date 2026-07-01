@@ -66,7 +66,7 @@ class _MainShellScreenState extends State<MainShellScreen> {
           _pageController.animateToPage(
             index,
             duration: const Duration(milliseconds: 320),
-            curve: Curves.easeOutCubic,
+            curve: Curves.easeOutQuart,
           );
         },
       ),

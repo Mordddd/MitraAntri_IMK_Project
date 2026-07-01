@@ -131,9 +131,9 @@ class _ShimmerBox extends StatelessWidget {
           begin: Alignment(-1 + animation.value * 2, 0),
           end: Alignment(animation.value * 2, 0),
           colors: const [
-            Color(0xFFE8EEF7),
-            Color(0xFFF8FAFC),
-            Color(0xFFE8EEF7),
+            Color(0xFFE4E3DA),
+            Color(0xFFF9F7F0),
+            Color(0xFFE4E3DA),
           ],
         ),
       ),
@@ -168,9 +168,9 @@ class PartnerEmptyState extends StatelessWidget {
             Container(
               width: 88,
               height: 88,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: AppColors.lightGrey,
-                shape: BoxShape.circle,
+                borderRadius: BorderRadius.circular(28),
               ),
               child: Icon(icon, size: 40, color: AppColors.subtext),
             ),
@@ -180,7 +180,7 @@ class PartnerEmptyState extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 18,
-                fontWeight: FontWeight.w800,
+                fontWeight: FontWeight.w700,
                 color: AppColors.navy,
               ),
             ),
@@ -201,7 +201,7 @@ class PartnerEmptyState extends StatelessWidget {
                 style: FilledButton.styleFrom(
                   backgroundColor: AppColors.primary,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(24),
                   ),
                 ),
                 child: Text(actionLabel!),

@@ -40,10 +40,27 @@ class _FashionServiceScreenState extends State<FashionServiceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopAppBar(title: 'Fashion Service'),
+      appBar: TopAppBar(title: 'Titip fashion'),
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
         children: [
+          const Text(
+            'Titip belanja,\ntanpa ikut antre.',
+            maxLines: 2,
+            style: TextStyle(
+              color: AppColors.navy,
+              fontSize: 30,
+              height: 1.06,
+              letterSpacing: -.9,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: 10),
+          const Text(
+            'Pilih brand dan jelaskan produk yang Anda cari.',
+            style: TextStyle(color: AppColors.subtext),
+          ),
+          const SizedBox(height: 22),
           TextField(
             controller: _searchController,
             onChanged: (_) => setState(() {}),
@@ -57,9 +74,9 @@ class _FashionServiceScreenState extends State<FashionServiceScreen> {
           ),
           const SizedBox(height: 16),
           Text(
-            'Brand',
+            'Pilih brand',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                 ),
           ),
           const SizedBox(height: 12),
@@ -74,8 +91,7 @@ class _FashionServiceScreenState extends State<FashionServiceScreen> {
                 label: Text(brandName),
                 selected: selected,
                 selectedColor: AppColors.primary.withValues(alpha: 0.15),
-                onSelected: (_) =>
-                    setState(() => _selectedBrandId = brand.id),
+                onSelected: (_) => setState(() => _selectedBrandId = brand.id),
               );
             }).toList(),
           ),
@@ -84,17 +100,17 @@ class _FashionServiceScreenState extends State<FashionServiceScreen> {
             Container(
               height: 120,
               decoration: BoxDecoration(
-                color: AppColors.lightGrey,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: AppColors.border),
+                color: AppColors.card,
+                borderRadius: BorderRadius.circular(26),
+                border: Border.all(color: Colors.white70),
+                boxShadow: AppColors.cardShadow,
               ),
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.image_rounded,
-                      size: 40, color: AppColors.primary),
+                  Icon(Icons.image_rounded, size: 40, color: AppColors.primary),
                   SizedBox(height: 8),
-                  Text('Upload Product Image'),
+                  Text('Tambahkan foto produk'),
                 ],
               ),
             ),
@@ -104,7 +120,7 @@ class _FashionServiceScreenState extends State<FashionServiceScreen> {
             controller: _descriptionController,
             maxLines: 3,
             decoration: InputDecoration(
-              labelText: 'Description',
+              labelText: 'Deskripsi produk',
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
@@ -114,7 +130,7 @@ class _FashionServiceScreenState extends State<FashionServiceScreen> {
           TextField(
             controller: _addressController,
             decoration: InputDecoration(
-              labelText: 'Address',
+              labelText: 'Alamat tujuan',
               prefixIcon: const Icon(Icons.location_on_outlined),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
@@ -126,7 +142,7 @@ class _FashionServiceScreenState extends State<FashionServiceScreen> {
             controller: _notesController,
             maxLines: 2,
             decoration: InputDecoration(
-              labelText: 'Notes',
+              labelText: 'Catatan tambahan',
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
@@ -138,7 +154,7 @@ class _FashionServiceScreenState extends State<FashionServiceScreen> {
         padding: const EdgeInsets.all(16),
         child: SafeArea(
           child: PrimaryButton(
-            text: 'Order Partner',
+            text: 'Pesan mitra fashion',
             icon: Icons.person_search_rounded,
             onPressed: _selectedBrandId == null ||
                     _addressController.text.trim().isEmpty

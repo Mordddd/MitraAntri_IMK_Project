@@ -40,18 +40,35 @@ class PartnerHomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
                       child: Row(
                         children: [
-                          const Text(
-                            'Dashboard Mitra',
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w900,
-                              color: AppColors.navy,
+                          const Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Dashboard Mitra',
+                                  style: TextStyle(
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.w700,
+                                    letterSpacing: -.7,
+                                    color: AppColors.navy,
+                                  ),
+                                ),
+                                SizedBox(height: 3),
+                                Text(
+                                  'Kendali kerja Anda hari ini',
+                                  style: TextStyle(
+                                    color: AppColors.subtext,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          const Spacer(),
                           IconButton.filledTonal(
                             style: IconButton.styleFrom(
-                              backgroundColor: Colors.white,
+                              backgroundColor: AppColors.card,
+                              foregroundColor: AppColors.navy,
+                              minimumSize: const Size(48, 48),
                             ),
                             onPressed: () => Navigator.pushNamed(
                               context,
@@ -91,7 +108,7 @@ class PartnerHomeScreen extends StatelessWidget {
                             'Permintaan Masuk',
                             style: TextStyle(
                               fontSize: 16,
-                              fontWeight: FontWeight.w900,
+                              fontWeight: FontWeight.w700,
                               color: AppColors.navy,
                             ),
                           ),
@@ -105,13 +122,13 @@ class PartnerHomeScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color:
                                     AppColors.primary.withValues(alpha: 0.12),
-                                borderRadius: BorderRadius.circular(99),
+                                borderRadius: BorderRadius.circular(8),
                               ),
                               child: Text(
                                 '${partner.incomingOrders.length} baru',
                                 style: const TextStyle(
                                   color: AppColors.primary,
-                                  fontWeight: FontWeight.w800,
+                                  fontWeight: FontWeight.w700,
                                   fontSize: 11,
                                 ),
                               ),
@@ -191,7 +208,7 @@ class PartnerHomeScreen extends StatelessWidget {
                           'Ringkasan Hari Ini',
                           style: TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.w900,
+                            fontWeight: FontWeight.w700,
                             color: AppColors.navy,
                           ),
                         ),
@@ -257,11 +274,12 @@ class _ActiveOrderBanner extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        padding: const EdgeInsets.all(16),
+        duration: const Duration(milliseconds: 520),
+        curve: Curves.easeOutQuart,
+        padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
           color: AppColors.primary,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(24),
         ),
         child: Row(
           children: [
@@ -283,7 +301,7 @@ class _ActiveOrderBanner extends StatelessWidget {
                     customerName,
                     style: const TextStyle(
                       color: Colors.white,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w700,
                       fontSize: 16,
                     ),
                   ),

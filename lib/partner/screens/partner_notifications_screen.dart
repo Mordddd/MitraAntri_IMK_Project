@@ -26,7 +26,7 @@ class PartnerNotificationsScreen extends StatelessWidget {
       body: notifications.isEmpty
           ? const Center(child: Text('Tidak ada notifikasi'))
           : ListView.builder(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
               itemCount: notifications.length,
               itemBuilder: (context, index) {
                 final notif = notifications[index];
@@ -44,25 +44,26 @@ class PartnerNotificationsScreen extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(
                       color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(18),
+                      borderRadius: BorderRadius.circular(24),
                     ),
                     child: const Icon(Icons.done_rounded, color: Colors.white),
                   ),
                   child: InkWell(
                     onTap: () => partner.markNotificationRead(notif.id),
-                    borderRadius: BorderRadius.circular(18),
+                    borderRadius: BorderRadius.circular(24),
                     child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
+                      duration: const Duration(milliseconds: 520),
+                      curve: Curves.easeOutQuart,
                       margin: const EdgeInsets.only(bottom: 10),
                       padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(
                         color: notif.isRead
-                            ? Colors.white
+                            ? AppColors.card
                             : AppColors.primary.withValues(alpha: 0.06),
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(24),
                         border: Border.all(
                           color: notif.isRead
-                              ? AppColors.border
+                              ? Colors.white70
                               : AppColors.primary.withValues(alpha: 0.3),
                         ),
                       ),
@@ -88,7 +89,7 @@ class PartnerNotificationsScreen extends StatelessWidget {
                                 Text(
                                   notif.type.title,
                                   style: const TextStyle(
-                                    fontWeight: FontWeight.w900,
+                                    fontWeight: FontWeight.w700,
                                     fontSize: 14,
                                     color: AppColors.navy,
                                   ),

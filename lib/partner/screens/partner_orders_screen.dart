@@ -40,9 +40,14 @@ class _PartnerOrdersScreenState extends State<PartnerOrdersScreen>
         title: const Text('Pesanan'),
         bottom: TabBar(
           controller: _tabController,
-          labelColor: AppColors.primary,
+          labelColor: AppColors.primaryDark,
           unselectedLabelColor: AppColors.subtext,
-          indicatorColor: AppColors.primary,
+          indicatorSize: TabBarIndicatorSize.tab,
+          dividerColor: Colors.transparent,
+          indicator: BoxDecoration(
+            color: AppColors.card,
+            borderRadius: BorderRadius.circular(18),
+          ),
           tabs: [
             Tab(
               child: Row(
@@ -96,7 +101,7 @@ class _ActiveTab extends StatelessWidget {
     }
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
       child: Column(
         children: [
           PartnerOrderHistoryCard(
@@ -120,7 +125,7 @@ class _ActiveTab extends StatelessWidget {
                 backgroundColor: AppColors.primary,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(24),
                 ),
               ),
             ),
@@ -149,7 +154,7 @@ class _HistoryTab extends StatelessWidget {
     }
 
     return ListView.builder(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
       itemCount: history.length,
       itemBuilder: (context, index) {
         return PartnerOrderHistoryCard(order: history[index]);

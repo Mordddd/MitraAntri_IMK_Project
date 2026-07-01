@@ -40,18 +40,24 @@ class ProfileScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(24),
+                        padding: const EdgeInsets.all(26),
                         decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: AppColors.border),
+                          color: AppColors.card,
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(
+                            color: Colors.white.withValues(alpha: .72),
+                          ),
+                          boxShadow: AppColors.cardShadow,
                         ),
                         child: Column(
                           children: [
-                            CircleAvatar(
-                              radius: 48,
-                              backgroundColor:
-                                  AppColors.primary.withValues(alpha: 0.12),
+                            Container(
+                              width: 96,
+                              height: 96,
+                              decoration: BoxDecoration(
+                                color: AppColors.primary.withValues(alpha: .12),
+                                borderRadius: BorderRadius.circular(30),
+                              ),
                               child: const Icon(
                                 Icons.person_rounded,
                                 size: 48,
@@ -64,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
                               style: Theme.of(context)
                                   .textTheme
                                   .titleLarge
-                                  ?.copyWith(fontWeight: FontWeight.w900),
+                                  ?.copyWith(fontWeight: FontWeight.w700),
                             ),
                             const SizedBox(height: 4),
                             Text(
@@ -109,14 +115,14 @@ class ProfileScreen extends StatelessWidget {
                             'Keluar',
                             style: TextStyle(
                               color: AppColors.danger,
-                              fontWeight: FontWeight.w800,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                           style: OutlinedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(vertical: 14),
                             side: const BorderSide(color: AppColors.danger),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(24),
                             ),
                           ),
                         ),
@@ -150,9 +156,10 @@ class _ProfileTile extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border),
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: Colors.white.withValues(alpha: .72)),
+        boxShadow: AppColors.cardShadow,
       ),
       child: Row(
         children: [
@@ -174,7 +181,7 @@ class _ProfileTile extends StatelessWidget {
                 Text(
                   value,
                   style: const TextStyle(
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w700,
                     color: AppColors.navy,
                   ),
                 ),

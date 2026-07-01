@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             Text(
                               'Selamat datang kembali',
-                              style: Theme.of(context).textTheme.headlineMedium,
+                              style: Theme.of(context).textTheme.headlineLarge,
                             ),
                             const SizedBox(height: 8),
                             const Text(
@@ -237,7 +237,7 @@ class _FormLabel extends StatelessWidget {
       text,
       style: const TextStyle(
         color: AppColors.text,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w600,
         fontSize: 13,
       ),
     );

@@ -7,8 +7,8 @@ class AppCard extends StatefulWidget {
     required this.child,
     this.padding = const EdgeInsets.all(16),
     this.margin,
-    this.color = Colors.white,
-    this.radius = 18,
+    this.color = AppColors.card,
+    this.radius = 24,
     this.onTap,
     this.borderColor,
   });
@@ -33,24 +33,27 @@ class _AppCardState extends State<AppCard> {
     final reduceMotion = MediaQuery.disableAnimationsOf(context);
     final content = AnimatedContainer(
       duration:
-          reduceMotion ? Duration.zero : const Duration(milliseconds: 180),
-      curve: Curves.easeOutCubic,
+          reduceMotion ? Duration.zero : const Duration(milliseconds: 420),
+      curve: Curves.easeOutQuart,
       margin: widget.margin,
       padding: widget.padding,
       decoration: BoxDecoration(
         color: widget.color,
         borderRadius: BorderRadius.circular(widget.radius),
-        border: Border.all(color: widget.borderColor ?? AppColors.border),
+        border: Border.all(
+          color: widget.borderColor ?? Colors.white.withValues(alpha: .7),
+        ),
+        boxShadow: widget.color == AppColors.card ? AppColors.cardShadow : null,
       ),
       child: widget.child,
     );
 
     if (widget.onTap == null) return content;
     return AnimatedScale(
-      scale: _pressed && !reduceMotion ? 0.985 : 1,
+      scale: _pressed && !reduceMotion ? 0.975 : 1,
       duration:
-          reduceMotion ? Duration.zero : const Duration(milliseconds: 120),
-      curve: Curves.easeOut,
+          reduceMotion ? Duration.zero : const Duration(milliseconds: 180),
+      curve: Curves.easeOutQuart,
       child: Material(
         color: Colors.transparent,
         child: InkWell(

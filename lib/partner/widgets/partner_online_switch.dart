@@ -12,17 +12,17 @@ class PartnerOnlineSwitch extends StatelessWidget {
     final isOnline = partner.isOnline;
 
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 350),
-      curve: Curves.easeOutCubic,
+      duration: const Duration(milliseconds: 560),
+      curve: Curves.easeOutQuart,
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
         color: isOnline
             ? AppColors.primary.withValues(alpha: 0.12)
             : AppColors.lightGrey,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(25),
         border: Border.all(
-          color: isOnline ? AppColors.primary : AppColors.border,
+          color: isOnline ? AppColors.primary : Colors.white70,
           width: 1.5,
         ),
         boxShadow: isOnline
@@ -81,12 +81,12 @@ class _SwitchSide extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeOutCubic,
+        duration: const Duration(milliseconds: 520),
+        curve: Curves.easeOutQuart,
         padding: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
           color: active ? activeColor : Colors.transparent,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: active
               ? [
                   BoxShadow(
@@ -109,7 +109,7 @@ class _SwitchSide extends StatelessWidget {
             Text(
               label,
               style: TextStyle(
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w700,
                 fontSize: 13,
                 letterSpacing: 0.5,
                 color: active ? Colors.white : AppColors.subtext,

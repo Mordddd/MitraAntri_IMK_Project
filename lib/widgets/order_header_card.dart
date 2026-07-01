@@ -12,8 +12,8 @@ class OrderHeaderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppCard(
-      padding: const EdgeInsets.all(14),
-      radius: 18,
+      padding: const EdgeInsets.all(18),
+      radius: 26,
       child: Row(
         children: [
           Expanded(
@@ -25,7 +25,7 @@ class OrderHeaderCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         color: AppColors.navy,
-                        fontWeight: FontWeight.w900,
+                        fontWeight: FontWeight.w700,
                         fontSize: 14)),
                 const SizedBox(height: 5),
                 Text(order.service,
@@ -33,7 +33,7 @@ class OrderHeaderCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         color: AppColors.subtext,
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w500,
                         fontSize: 12)),
                 const SizedBox(height: 7),
                 Row(
@@ -47,7 +47,7 @@ class OrderHeaderCard extends StatelessWidget {
                             style: const TextStyle(
                                 color: AppColors.subtext,
                                 fontSize: 11.5,
-                                fontWeight: FontWeight.w700))),
+                                fontWeight: FontWeight.w500))),
                   ],
                 ),
               ],

@@ -26,18 +26,19 @@ class PaymentOption extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(24),
           child: Container(
             margin: const EdgeInsets.only(bottom: 10),
-            padding: const EdgeInsets.all(13),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: selected
                   ? AppColors.teal.withValues(alpha: .08)
-                  : Colors.white,
-              borderRadius: BorderRadius.circular(18),
+                  : AppColors.card,
+              borderRadius: BorderRadius.circular(24),
               border: Border.all(
-                  color: selected ? AppColors.teal : AppColors.border,
-                  width: selected ? 1.4 : 1),
+                  color: selected ? AppColors.teal : Colors.white70,
+                  width: selected ? 1.6 : 1),
+              boxShadow: selected ? null : AppColors.cardShadow,
             ),
             child: Row(
               children: [
@@ -46,7 +47,7 @@ class PaymentOption extends StatelessWidget {
                   height: 38,
                   decoration: BoxDecoration(
                       color: selected ? AppColors.teal : AppColors.softBlue,
-                      borderRadius: BorderRadius.circular(13)),
+                      borderRadius: BorderRadius.circular(15)),
                   child: Icon(icon,
                       color: selected ? Colors.white : AppColors.teal,
                       size: 20),
@@ -60,7 +61,7 @@ class PaymentOption extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
-                              fontWeight: FontWeight.w900,
+                              fontWeight: FontWeight.w700,
                               color: AppColors.navy,
                               fontSize: 13.5)),
                       const SizedBox(height: 3),
@@ -70,7 +71,7 @@ class PaymentOption extends StatelessWidget {
                           style: const TextStyle(
                               color: AppColors.subtext,
                               fontSize: 11.2,
-                              fontWeight: FontWeight.w600)),
+                              fontWeight: FontWeight.w500)),
                     ],
                   ),
                 ),

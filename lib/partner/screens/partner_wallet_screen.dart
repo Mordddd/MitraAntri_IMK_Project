@@ -17,7 +17,7 @@ class PartnerWalletScreen extends StatelessWidget {
       backgroundColor: AppColors.bg,
       appBar: AppBar(title: const Text('Dompet Mitra')),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -25,13 +25,13 @@ class PartnerWalletScreen extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.circular(18),
+                color: AppColors.navy,
+                borderRadius: BorderRadius.circular(30),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.primary.withValues(alpha: 0.3),
-                    blurRadius: 24,
-                    offset: const Offset(0, 12),
+                    color: AppColors.navy.withValues(alpha: 0.18),
+                    blurRadius: 34,
+                    offset: const Offset(0, 16),
                   ),
                 ],
               ),
@@ -51,7 +51,8 @@ class PartnerWalletScreen extends StatelessWidget {
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 32,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: -1,
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -93,7 +94,7 @@ class PartnerWalletScreen extends StatelessWidget {
                   backgroundColor: AppColors.navy,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(24),
                   ),
                 ),
               ),
@@ -103,7 +104,7 @@ class PartnerWalletScreen extends StatelessWidget {
               'Riwayat Transaksi',
               style: TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w700,
                 color: AppColors.navy,
               ),
             ),
@@ -116,9 +117,10 @@ class PartnerWalletScreen extends StatelessWidget {
                 margin: const EdgeInsets.only(bottom: 10),
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(18),
-                  border: Border.all(color: AppColors.border),
+                  color: AppColors.card,
+                  borderRadius: BorderRadius.circular(22),
+                  border: Border.all(color: Colors.white70),
+                  boxShadow: AppColors.cardShadow,
                 ),
                 child: Row(
                   children: [
@@ -147,7 +149,7 @@ class PartnerWalletScreen extends StatelessWidget {
                           Text(
                             tx.title,
                             style: const TextStyle(
-                              fontWeight: FontWeight.w800,
+                              fontWeight: FontWeight.w600,
                               fontSize: 13,
                               color: AppColors.navy,
                             ),
@@ -165,7 +167,7 @@ class PartnerWalletScreen extends StatelessWidget {
                     Text(
                       '${tx.isCredit ? '+' : '-'}${CurrencyFormatter.rupiah(tx.amount)}',
                       style: TextStyle(
-                        fontWeight: FontWeight.w900,
+                        fontWeight: FontWeight.w700,
                         color:
                             tx.isCredit ? AppColors.success : AppColors.danger,
                       ),
@@ -214,7 +216,7 @@ class _IncomeChip extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 11,
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w700,
               ),
             ),
           ],

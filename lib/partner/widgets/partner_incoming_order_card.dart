@@ -23,7 +23,7 @@ class PartnerIncomingOrderCard extends StatelessWidget {
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0, end: 1),
       duration: const Duration(milliseconds: 400),
-      curve: Curves.easeOutCubic,
+      curve: Curves.easeOutQuart,
       builder: (context, value, child) {
         return Transform.translate(
           offset: Offset(0, 20 * (1 - value)),
@@ -32,11 +32,12 @@ class PartnerIncomingOrderCard extends StatelessWidget {
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 14),
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: AppColors.border),
+          color: AppColors.card,
+          borderRadius: BorderRadius.circular(26),
+          border: Border.all(color: Colors.white.withValues(alpha: .72)),
+          boxShadow: AppColors.cardShadow,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +57,7 @@ class PartnerIncomingOrderCard extends StatelessWidget {
                       Text(
                         order.customerName,
                         style: const TextStyle(
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.w700,
                           fontSize: 16,
                           color: AppColors.navy,
                         ),
@@ -69,14 +70,14 @@ class PartnerIncomingOrderCard extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           color: category.color.withValues(alpha: 0.12),
-                          borderRadius: BorderRadius.circular(99),
+                          borderRadius: BorderRadius.circular(7),
                         ),
                         child: Text(
                           category.label,
                           style: TextStyle(
                             color: category.color,
                             fontSize: 11,
-                            fontWeight: FontWeight.w800,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
@@ -86,7 +87,7 @@ class PartnerIncomingOrderCard extends StatelessWidget {
                 Text(
                   CurrencyFormatter.rupiah(order.price),
                   style: const TextStyle(
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w700,
                     fontSize: 16,
                     color: AppColors.primary,
                   ),
@@ -126,13 +127,13 @@ class PartnerIncomingOrderCard extends StatelessWidget {
                       foregroundColor: AppColors.danger,
                       side: const BorderSide(color: AppColors.danger),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(24),
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 14),
                     ),
                     child: const Text(
                       'Tolak',
-                      style: TextStyle(fontWeight: FontWeight.w900),
+                      style: TextStyle(fontWeight: FontWeight.w700),
                     ),
                   ),
                 ),
@@ -143,13 +144,13 @@ class PartnerIncomingOrderCard extends StatelessWidget {
                     style: FilledButton.styleFrom(
                       backgroundColor: AppColors.primary,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(24),
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 14),
                     ),
                     child: const Text(
                       'Terima',
-                      style: TextStyle(fontWeight: FontWeight.w900),
+                      style: TextStyle(fontWeight: FontWeight.w700),
                     ),
                   ),
                 ),

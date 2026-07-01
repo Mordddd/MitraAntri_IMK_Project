@@ -37,15 +37,32 @@ class _CulinaryServiceScreenState extends State<CulinaryServiceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopAppBar(title: 'Culinary Service'),
+      appBar: TopAppBar(title: 'Titip kuliner'),
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
         children: [
+          const Text(
+            'Makanannya datang.\nAntreannya tidak.',
+            maxLines: 2,
+            style: TextStyle(
+              color: AppColors.navy,
+              fontSize: 30,
+              height: 1.06,
+              letterSpacing: -.9,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: 10),
+          const Text(
+            'Berikan detail restoran dan menu untuk mitra.',
+            style: TextStyle(color: AppColors.subtext),
+          ),
+          const SizedBox(height: 22),
           TextField(
             controller: _restaurantController,
             onChanged: (_) => setState(() {}),
             decoration: InputDecoration(
-              labelText: 'Restaurant Name',
+              labelText: 'Nama restoran',
               prefixIcon: const Icon(Icons.storefront_outlined),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
@@ -57,7 +74,7 @@ class _CulinaryServiceScreenState extends State<CulinaryServiceScreen> {
             controller: _foodController,
             onChanged: (_) => setState(() {}),
             decoration: InputDecoration(
-              labelText: 'Food Name',
+              labelText: 'Nama menu',
               prefixIcon: const Icon(Icons.restaurant_outlined),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
@@ -69,7 +86,7 @@ class _CulinaryServiceScreenState extends State<CulinaryServiceScreen> {
             controller: _addressController,
             onChanged: (_) => setState(() {}),
             decoration: InputDecoration(
-              labelText: 'Address',
+              labelText: 'Alamat restoran',
               prefixIcon: const Icon(Icons.location_on_outlined),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
@@ -80,7 +97,7 @@ class _CulinaryServiceScreenState extends State<CulinaryServiceScreen> {
           TextField(
             controller: _mapsController,
             decoration: InputDecoration(
-              labelText: 'Google Maps Link',
+              labelText: 'Tautan Google Maps',
               prefixIcon: const Icon(Icons.map_outlined),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
@@ -92,7 +109,7 @@ class _CulinaryServiceScreenState extends State<CulinaryServiceScreen> {
             controller: _descriptionController,
             maxLines: 3,
             decoration: InputDecoration(
-              labelText: 'Description',
+              labelText: 'Detail pesanan',
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
@@ -102,9 +119,10 @@ class _CulinaryServiceScreenState extends State<CulinaryServiceScreen> {
           Container(
             height: 120,
             decoration: BoxDecoration(
-              color: AppColors.lightGrey,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppColors.border),
+              color: AppColors.card,
+              borderRadius: BorderRadius.circular(26),
+              border: Border.all(color: Colors.white70),
+              boxShadow: AppColors.cardShadow,
             ),
             child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -112,7 +130,7 @@ class _CulinaryServiceScreenState extends State<CulinaryServiceScreen> {
                 Icon(Icons.add_a_photo_outlined,
                     size: 40, color: AppColors.primary),
                 SizedBox(height: 8),
-                Text('Upload Food Photo'),
+                Text('Tambahkan foto referensi'),
               ],
             ),
           ),
@@ -122,11 +140,10 @@ class _CulinaryServiceScreenState extends State<CulinaryServiceScreen> {
         padding: const EdgeInsets.all(16),
         child: SafeArea(
           child: PrimaryButton(
-            text: 'Order Partner',
+            text: 'Pesan mitra kuliner',
             icon: Icons.person_search_rounded,
-            onPressed: _canSubmit
-                ? () => SnackbarHelper.orderCreated(context)
-                : null,
+            onPressed:
+                _canSubmit ? () => SnackbarHelper.orderCreated(context) : null,
           ),
         ),
       ),

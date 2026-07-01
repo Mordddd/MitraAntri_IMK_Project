@@ -30,11 +30,12 @@ class ProgressTimeline extends StatelessWidget {
                                     ? AppColors.teal
                                     : AppColors.border)),
                       AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
+                        duration: const Duration(milliseconds: 520),
+                        curve: Curves.easeOutQuart,
                         width: 24,
                         height: 24,
                         decoration: BoxDecoration(
-                          color: active ? AppColors.teal : Colors.white,
+                          color: active ? AppColors.teal : AppColors.card,
                           shape: BoxShape.circle,
                           border: Border.all(
                               color: active ? AppColors.teal : AppColors.border,
@@ -63,7 +64,7 @@ class ProgressTimeline extends StatelessWidget {
                     style: TextStyle(
                       color: active ? AppColors.tealDark : AppColors.subtext,
                       fontSize: 10,
-                      fontWeight: active ? FontWeight.w900 : FontWeight.w700,
+                      fontWeight: active ? FontWeight.w700 : FontWeight.w500,
                     ),
                   ),
                 ],

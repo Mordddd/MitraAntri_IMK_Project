@@ -8,13 +8,13 @@ class TopAppBar extends PreferredSize {
     bool showBack = true,
     List<Widget>? actions,
   }) : super(
-    preferredSize: const Size.fromHeight(64),
-    child: _TopAppBarContent(
-      title: title,
-      showBack: showBack,
-      actions: actions,
-    ),
-  );
+          preferredSize: const Size.fromHeight(72),
+          child: _TopAppBarContent(
+            title: title,
+            showBack: showBack,
+            actions: actions,
+          ),
+        );
 }
 
 class _TopAppBarContent extends StatelessWidget {
@@ -31,7 +31,7 @@ class _TopAppBarContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 10, 12, 8),
+      padding: const EdgeInsets.fromLTRB(20, 14, 20, 8),
       child: Row(
         children: [
           if (showBack)
@@ -40,21 +40,23 @@ class _TopAppBarContent extends StatelessWidget {
               onTap: () => Navigator.maybePop(context),
             )
           else
-            const SizedBox(width: 44),
+            const SizedBox.shrink(),
+          if (showBack) const SizedBox(width: 12),
           Expanded(
             child: Text(
               title,
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.left,
               style: const TextStyle(
                   color: AppColors.navy,
-                  fontWeight: FontWeight.w900,
-                  fontSize: 16),
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: -0.35,
+                  fontSize: 18),
             ),
           ),
           if (actions != null && actions!.isNotEmpty)
             Row(children: actions!)
           else
-            const SizedBox(width: 44),
+            const SizedBox.shrink(),
         ],
       ),
     );
@@ -69,17 +71,17 @@ class _IconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(15),
+      color: AppColors.shell,
+      borderRadius: BorderRadius.circular(18),
       child: InkWell(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(18),
         onTap: onTap,
         child: Container(
           width: 44,
           height: 44,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              border: Border.all(color: AppColors.border)),
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(color: Colors.white.withValues(alpha: .7))),
           child: Icon(icon, size: 18, color: AppColors.navy),
         ),
       ),

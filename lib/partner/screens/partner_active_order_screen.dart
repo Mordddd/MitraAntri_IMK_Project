@@ -31,22 +31,23 @@ class PartnerActiveOrderScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AnimatedContainer(
-              duration: const Duration(milliseconds: 400),
+              duration: const Duration(milliseconds: 620),
+              curve: Curves.easeOutQuart,
               width: double.infinity,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.circular(18),
+                color: AppColors.navy,
+                borderRadius: BorderRadius.circular(30),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.primary.withValues(alpha: 0.3),
-                    blurRadius: 20,
-                    offset: const Offset(0, 10),
+                    color: AppColors.navy.withValues(alpha: 0.18),
+                    blurRadius: 32,
+                    offset: const Offset(0, 14),
                   ),
                 ],
               ),
@@ -62,7 +63,7 @@ class PartnerActiveOrderScreen extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           color: Colors.white.withValues(alpha: 0.2),
-                          borderRadius: BorderRadius.circular(99),
+                          borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Row(
                           children: [
@@ -72,7 +73,7 @@ class PartnerActiveOrderScreen extends StatelessWidget {
                               'Sedang Berlangsung',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontWeight: FontWeight.w800,
+                                fontWeight: FontWeight.w600,
                                 fontSize: 12,
                               ),
                             ),
@@ -87,7 +88,7 @@ class PartnerActiveOrderScreen extends StatelessWidget {
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 24,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -178,7 +179,7 @@ class PartnerActiveOrderScreen extends StatelessWidget {
               child: FilledButton.icon(
                 onPressed: () {
                   partner.finishActiveOrder();
-                  SnackbarHelper.show(context, 'Pesanan selesai!');
+                  SnackbarHelper.show(context, 'Pesanan selesai');
                   Navigator.pop(context);
                 },
                 icon: const Icon(Icons.check_circle_rounded),
@@ -187,7 +188,7 @@ class PartnerActiveOrderScreen extends StatelessWidget {
                   backgroundColor: AppColors.primary,
                   padding: const EdgeInsets.symmetric(vertical: 18),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18),
+                    borderRadius: BorderRadius.circular(24),
                   ),
                 ),
               ),
@@ -220,9 +221,10 @@ class _DetailCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: AppColors.border),
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: Colors.white70),
+        boxShadow: AppColors.cardShadow,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -245,7 +247,7 @@ class _DetailCard extends StatelessWidget {
                   title,
                   style: const TextStyle(
                     fontSize: 11,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w500,
                     color: AppColors.subtext,
                   ),
                 ),
@@ -254,7 +256,7 @@ class _DetailCard extends StatelessWidget {
                   subtitle,
                   style: const TextStyle(
                     fontSize: 15,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w700,
                     color: AppColors.navy,
                   ),
                 ),
@@ -301,14 +303,14 @@ class _ActionButton extends StatelessWidget {
           label,
           style: TextStyle(
             color: color,
-            fontWeight: FontWeight.w800,
+            fontWeight: FontWeight.w700,
           ),
         ),
         style: OutlinedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
           side: BorderSide(color: color.withValues(alpha: 0.4)),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(24),
           ),
         ),
       ),

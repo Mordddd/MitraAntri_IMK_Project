@@ -31,25 +31,32 @@ class WalletScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 18, 20, 0),
                 child: Text(
-                  'Wallet',
-                  style: Theme.of(context).textTheme.headlineSmall,
+                  'Dompet Anda',
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
                 children: [
                   Container(
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(18),
+                      color: AppColors.navy,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.navy.withValues(alpha: .18),
+                          blurRadius: 34,
+                          offset: const Offset(0, 16),
+                        ),
+                      ],
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Balance',
+                          'Saldo tersedia',
                           style: TextStyle(
                             color: Colors.white.withValues(alpha: 0.9),
                             fontWeight: FontWeight.w600,
@@ -61,7 +68,8 @@ class WalletScreen extends StatelessWidget {
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 32,
-                            fontWeight: FontWeight.w900,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: -1,
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -71,7 +79,7 @@ class WalletScreen extends StatelessWidget {
                                 color: Colors.white, size: 18),
                             const SizedBox(width: 6),
                             Text(
-                              'Income ${CurrencyFormatter.rupiah(wallet.totalEarned)}',
+                              'Total masuk ${CurrencyFormatter.rupiah(wallet.totalEarned)}',
                               style: TextStyle(
                                 color: Colors.white.withValues(alpha: 0.95),
                                 fontWeight: FontWeight.w700,
@@ -93,22 +101,22 @@ class WalletScreen extends StatelessWidget {
                         );
                       },
                       icon: const Icon(Icons.account_balance_wallet_outlined),
-                      label: const Text('Withdraw'),
+                      label: const Text('Tarik saldo'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(24),
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 24),
                   Text(
-                    'Transaction History',
+                    'Riwayat transaksi',
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.w700,
                         ),
                   ),
                   const SizedBox(height: 12),
@@ -119,9 +127,12 @@ class WalletScreen extends StatelessWidget {
                         margin: const EdgeInsets.only(bottom: 10),
                         padding: const EdgeInsets.all(14),
                         decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: AppColors.border),
+                          color: AppColors.card,
+                          borderRadius: BorderRadius.circular(22),
+                          border: Border.all(
+                            color: Colors.white.withValues(alpha: .72),
+                          ),
+                          boxShadow: AppColors.cardShadow,
                         ),
                         child: Row(
                           children: [
@@ -148,7 +159,7 @@ class WalletScreen extends StatelessWidget {
                                   Text(
                                     tx.description,
                                     style: const TextStyle(
-                                      fontWeight: FontWeight.w800,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                   Text(
@@ -164,7 +175,7 @@ class WalletScreen extends StatelessWidget {
                             Text(
                               '${isCredit ? '+' : '-'}${CurrencyFormatter.rupiah(tx.amount)}',
                               style: TextStyle(
-                                fontWeight: FontWeight.w900,
+                                fontWeight: FontWeight.w700,
                                 color: isCredit ? Colors.green : Colors.red,
                               ),
                             ),

@@ -75,7 +75,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                       Text('Detail Pemesanan',
                                           style: TextStyle(
                                               color: AppColors.navy,
-                                              fontWeight: FontWeight.w900,
+                                              fontWeight: FontWeight.w700,
                                               fontSize: 18)),
                                       SizedBox(height: 4),
                                       Text(
@@ -126,9 +126,10 @@ class _BookingScreenState extends State<BookingScreen> {
                               width: double.infinity,
                               padding: const EdgeInsets.all(15),
                               decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(18),
-                                border: Border.all(color: AppColors.border),
+                                color: AppColors.card,
+                                borderRadius: BorderRadius.circular(24),
+                                border: Border.all(color: Colors.white70),
+                                boxShadow: AppColors.cardShadow,
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,7 +186,7 @@ class _BookingScreenState extends State<BookingScreen> {
                               height: 48,
                               decoration: BoxDecoration(
                                   color: AppColors.mint,
-                                  borderRadius: BorderRadius.circular(16)),
+                                  borderRadius: BorderRadius.circular(24)),
                               child: const Icon(Icons.payments_rounded,
                                   color: AppColors.teal),
                             ),
@@ -197,7 +198,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                   Text('Rp 80.000 – Rp 120.000',
                                       style: TextStyle(
                                           color: AppColors.navy,
-                                          fontWeight: FontWeight.w900,
+                                          fontWeight: FontWeight.w700,
                                           fontSize: 16)),
                                   SizedBox(height: 3),
                                   Text(

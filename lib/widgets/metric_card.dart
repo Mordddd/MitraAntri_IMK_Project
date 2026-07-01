@@ -20,11 +20,12 @@ class MetricCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border),
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: Colors.white.withValues(alpha: .72)),
+        boxShadow: AppColors.cardShadow,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +35,7 @@ class MetricCard extends StatelessWidget {
             height: 34,
             decoration: BoxDecoration(
                 color: color.withValues(alpha: .12),
-                borderRadius: BorderRadius.circular(12)),
+                borderRadius: BorderRadius.circular(14)),
             child: Icon(icon, color: color, size: 19),
           ),
           const SizedBox(height: 10),
@@ -43,7 +44,7 @@ class MetricCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                   fontSize: 17,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                   color: AppColors.navy)),
           const SizedBox(height: 2),
           Text(title,
@@ -51,7 +52,7 @@ class MetricCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                   fontSize: 11,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w500,
                   color: AppColors.subtext)),
           if (subtitle != null) ...[
             const SizedBox(height: 4),

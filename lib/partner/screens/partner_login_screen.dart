@@ -32,7 +32,10 @@ class _PartnerLoginScreenState extends State<PartnerLoginScreen>
       vsync: this,
       duration: const Duration(milliseconds: 800),
     );
-    _fadeIn = CurvedAnimation(parent: _animController, curve: Curves.easeOut);
+    _fadeIn = CurvedAnimation(
+      parent: _animController,
+      curve: Curves.easeOutQuart,
+    );
     _animController.forward();
   }
 
@@ -90,7 +93,7 @@ class _PartnerLoginScreenState extends State<PartnerLoginScreen>
                         ),
                         decoration: BoxDecoration(
                           color: AppColors.primary.withValues(alpha: 0.12),
-                          borderRadius: BorderRadius.circular(99),
+                          borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Row(
                           children: [
@@ -104,7 +107,7 @@ class _PartnerLoginScreenState extends State<PartnerLoginScreen>
                               'Mode Mitra',
                               style: TextStyle(
                                 color: AppColors.primary,
-                                fontWeight: FontWeight.w800,
+                                fontWeight: FontWeight.w700,
                                 fontSize: 12,
                               ),
                             ),
@@ -117,14 +120,16 @@ class _PartnerLoginScreenState extends State<PartnerLoginScreen>
                   const AppLogo(),
                   const SizedBox(height: 32),
                   Text(
-                    'Login Mitra Driver',
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
+                    'Masuk sebagai mitra.\nMulai hari kerja Anda.',
+                    maxLines: 2,
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                          fontSize: 31,
+                          fontWeight: FontWeight.w700,
                         ),
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Username: ${PartnerDummyData.demoUsername} | Password: ${PartnerDummyData.demoPassword}',
+                    'Akun demo: ${PartnerDummyData.demoUsername} / ${PartnerDummyData.demoPassword}',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: AppColors.subtext,
                         ),
@@ -136,7 +141,7 @@ class _PartnerLoginScreenState extends State<PartnerLoginScreen>
                       labelText: 'Username',
                       prefixIcon: const Icon(Icons.person_outline),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(18),
                       ),
                     ),
                   ),
@@ -160,7 +165,7 @@ class _PartnerLoginScreenState extends State<PartnerLoginScreen>
                         },
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(18),
                       ),
                     ),
                   ),
@@ -208,7 +213,7 @@ class _PartnerLoginScreenState extends State<PartnerLoginScreen>
                       style: OutlinedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(24),
                         ),
                       ),
                     ),
