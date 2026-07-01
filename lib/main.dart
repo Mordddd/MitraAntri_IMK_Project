@@ -5,6 +5,7 @@ import 'app/app_controller.dart';
 import 'app/app_scope.dart';
 import 'core/app_routes.dart';
 import 'core/app_theme.dart';
+<<<<<<< HEAD
 import 'dummy/dummy_data.dart';
 import 'models/hospital.dart';
 import 'partner/partner_controller.dart';
@@ -32,6 +33,15 @@ import 'screens/public_service_screen.dart';
 import 'screens/splash_screen.dart';
 import 'screens/tracking_screen.dart';
 import 'screens/wallet_screen.dart';
+=======
+import 'data/dummy_data.dart';
+import 'screens/booking_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/mitra_dashboard_screen.dart';
+import 'screens/onboarding_screen.dart';
+import 'screens/payment_screen.dart';
+import 'screens/tracking_screen.dart';
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 
 void main() {
   runApp(const MitraAntriApp());
@@ -46,22 +56,32 @@ class MitraAntriApp extends StatefulWidget {
 
 class _MitraAntriAppState extends State<MitraAntriApp> {
   late final AppController _controller;
+<<<<<<< HEAD
   late final PartnerController _partnerController;
+=======
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 
   @override
   void initState() {
     super.initState();
+<<<<<<< HEAD
     _controller = AppController(
       initialOrder: DummyData.order,
       wallet: DummyData.wallet,
     );
     _partnerController = PartnerController();
+=======
+    _controller = AppController(initialOrder: DummyData.order);
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
   }
 
   @override
   void dispose() {
     _controller.dispose();
+<<<<<<< HEAD
     _partnerController.dispose();
+=======
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
     super.dispose();
   }
 
@@ -69,6 +89,7 @@ class _MitraAntriAppState extends State<MitraAntriApp> {
   Widget build(BuildContext context) {
     return AppScope(
       controller: _controller,
+<<<<<<< HEAD
       child: PartnerScope(
         controller: _partnerController,
         child: MaterialApp(
@@ -85,11 +106,27 @@ class _MitraAntriAppState extends State<MitraAntriApp> {
           initialRoute: AppRoutes.splash,
           onGenerateRoute: _onGenerateRoute,
         ),
+=======
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Mitra Antri',
+        theme: AppTheme.light(),
+        locale: const Locale('id', 'ID'),
+        supportedLocales: const [Locale('id', 'ID')],
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        initialRoute: AppRoutes.onboarding,
+        onGenerateRoute: _onGenerateRoute,
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
       ),
     );
   }
 
   Route<void> _onGenerateRoute(RouteSettings settings) {
+<<<<<<< HEAD
     final requested = settings.name ?? AppRoutes.splash;
     final isPartner = _controller.role == AppRole.partner;
     final tabIndex = settings.arguments is int ? settings.arguments as int : 0;
@@ -126,6 +163,20 @@ class _MitraAntriAppState extends State<MitraAntriApp> {
           ? const PartnerShellScreen()
           : const PartnerLoginScreen(),
       _ => const SplashScreen(),
+=======
+    final requested = settings.name ?? AppRoutes.onboarding;
+    final isPartner = _controller.role == AppRole.partner;
+
+    final Widget screen = switch (requested) {
+      AppRoutes.onboarding => const OnboardingScreen(),
+      AppRoutes.dashboard when isPartner => const MitraDashboardScreen(),
+      AppRoutes.home when !isPartner => const HomeScreen(),
+      AppRoutes.booking when !isPartner => const BookingScreen(),
+      AppRoutes.tracking when !isPartner => const TrackingScreen(),
+      AppRoutes.payment when !isPartner => const PaymentScreen(),
+      _ when isPartner => const MitraDashboardScreen(),
+      _ => const OnboardingScreen(),
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
     };
 
     return MaterialPageRoute<void>(

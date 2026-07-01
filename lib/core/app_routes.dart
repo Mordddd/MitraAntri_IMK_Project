@@ -1,12 +1,17 @@
 class AppRoutes {
+<<<<<<< HEAD
   static const String splash = '/';
   static const String login = '/login';
   static const String main = '/main';
+=======
+  static const String onboarding = '/';
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
   static const String home = '/home';
   static const String booking = '/booking';
   static const String tracking = '/tracking';
   static const String payment = '/payment';
   static const String dashboard = '/dashboard';
+<<<<<<< HEAD
   static const String onboarding = '/onboarding';
 
   // Service screens
@@ -34,4 +39,6 @@ class AppRoutes {
   static const String partnerActiveOrder = '/partner/active-order';
   static const String partnerSettings = '/partner/settings';
   static const String partnerStatistics = '/partner/statistics';
+=======
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 }

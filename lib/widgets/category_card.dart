@@ -18,6 +18,7 @@ class CategoryCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+<<<<<<< HEAD
           if (category.emoji.isNotEmpty)
             Text(
               category.emoji,
@@ -33,6 +34,17 @@ class CategoryCard extends StatelessWidget {
               ),
               child: Icon(category.icon, color: category.color, size: 23),
             ),
+=======
+          Container(
+            width: 42,
+            height: 42,
+            decoration: BoxDecoration(
+              color: category.color.withValues(alpha: .12),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Icon(category.icon, color: category.color, size: 23),
+          ),
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
           const Spacer(),
           Text(
             category.title,

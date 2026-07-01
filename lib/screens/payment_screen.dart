@@ -24,7 +24,11 @@ class PaymentScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
+<<<<<<< HEAD
               TopAppBar(title: 'Detail Pesanan'),
+=======
+              const TopAppBar(title: 'Detail Pesanan'),
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),

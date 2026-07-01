@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
 
 import '../models/order.dart';
+<<<<<<< HEAD
 import '../models/wallet.dart';
 import '../dummy/dummy_data.dart';
+=======
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 
 enum AppRole { customer, partner }
 
@@ -20,26 +23,36 @@ enum OrderStatus {
 enum PaymentMethod { balance, bankTransfer, qris }
 
 class AppController extends ChangeNotifier {
+<<<<<<< HEAD
   AppController({
     required QueueOrder initialOrder,
     Wallet? wallet,
   })  : _order = initialOrder,
         _wallet = wallet ?? DummyData.wallet,
         _orderStatus = OrderStatus.assigned;
+=======
+  AppController({required QueueOrder initialOrder}) : _order = initialOrder;
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 
   AppRole _role = AppRole.customer;
   OrderStatus _orderStatus = OrderStatus.draft;
   PaymentMethod _paymentMethod = PaymentMethod.balance;
   QueueOrder _order;
+<<<<<<< HEAD
   Wallet _wallet;
   bool _isOnline = false;
+=======
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 
   AppRole get role => _role;
   OrderStatus get orderStatus => _orderStatus;
   PaymentMethod get paymentMethod => _paymentMethod;
   QueueOrder get order => _order;
+<<<<<<< HEAD
   Wallet get wallet => _wallet;
   bool get isOnline => _isOnline;
+=======
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 
   bool get hasOrder =>
       _orderStatus != OrderStatus.draft &&
@@ -124,10 +137,13 @@ class AppController extends ChangeNotifier {
   bool pay() {
     if (!canPay) return false;
     _orderStatus = OrderStatus.paid;
+<<<<<<< HEAD
     // Deduct from wallet
     _wallet = _wallet.copyWith(
       balance: _wallet.balance - _order.totalPayment,
     );
+=======
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
     notifyListeners();
     return true;
   }
@@ -136,6 +152,7 @@ class AppController extends ChangeNotifier {
     _orderStatus = OrderStatus.draft;
     notifyListeners();
   }
+<<<<<<< HEAD
 
   void toggleOnlineStatus() {
     _isOnline = !_isOnline;
@@ -163,4 +180,6 @@ class AppController extends ChangeNotifier {
       notifyListeners();
     }
   }
+=======
+>>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 }
