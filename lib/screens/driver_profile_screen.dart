@@ -23,8 +23,8 @@ class DriverProfileScreen extends StatelessWidget {
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(24),
-                boxShadow: AppColors.cardShadow,
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: AppColors.border),
               ),
               child: Column(
                 children: [
@@ -108,7 +108,8 @@ class DriverProfileScreen extends StatelessWidget {
             ),
             _InfoCard(
               icon: Icons.circle,
-              iconColor: driver.isOnline ? AppColors.success : AppColors.subtext,
+              iconColor:
+                  driver.isOnline ? AppColors.success : AppColors.subtext,
               label: 'Status',
               value: driver.isOnline ? 'Online' : 'Offline',
             ),

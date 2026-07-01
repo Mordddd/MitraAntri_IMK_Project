@@ -23,58 +23,63 @@ class PartnerBottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 78,
-      padding: const EdgeInsets.fromLTRB(8, 8, 8, 12),
+      height: 72,
+      padding: const EdgeInsets.fromLTRB(8, 6, 8, 10),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border(
-          top: BorderSide(color: AppColors.border.withValues(alpha: 0.8)),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.navy.withValues(alpha: 0.06),
-            blurRadius: 18,
-            offset: const Offset(0, -8),
-          ),
-        ],
+        border: const Border(top: BorderSide(color: AppColors.border)),
       ),
       child: Row(
         children: List.generate(items.length, (index) {
           final item = items[index];
           final active = index == currentIndex;
           return Expanded(
-            child: InkWell(
-              onTap: () => onTap(index),
-              borderRadius: BorderRadius.circular(16),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.symmetric(vertical: 6),
-                decoration: BoxDecoration(
-                  color: active
-                      ? AppColors.primary.withValues(alpha: 0.1)
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      item.icon,
-                      size: 22,
-                      color: active ? AppColors.primary : AppColors.subtext,
-                    ),
-                    const SizedBox(height: 3),
-                    Text(
-                      item.label,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: active ? FontWeight.w900 : FontWeight.w700,
-                        color: active ? AppColors.primary : AppColors.subtext,
+            child: Semantics(
+              button: true,
+              selected: active,
+              label: item.label,
+              child: InkWell(
+                onTap: () => onTap(index),
+                borderRadius: BorderRadius.circular(16),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 240),
+                  curve: Curves.easeOutCubic,
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  decoration: BoxDecoration(
+                    color: active
+                        ? AppColors.primary.withValues(alpha: 0.09)
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      AnimatedScale(
+                        scale: active ? 1.04 : 1,
+                        duration: const Duration(milliseconds: 240),
+                        curve: Curves.easeOutBack,
+                        child: Icon(
+                          item.icon,
+                          size: 22,
+                          color: active ? AppColors.primary : AppColors.subtext,
+                        ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 3),
+                      Text(
+                        item.label,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight:
+                              active ? FontWeight.w900 : FontWeight.w700,
+                          color: active
+                              ? AppColors.primaryDark
+                              : AppColors.subtext,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

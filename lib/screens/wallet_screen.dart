@@ -42,9 +42,8 @@ class WalletScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      gradient: AppColors.primaryGradient(),
-                      borderRadius: BorderRadius.circular(24),
-                      boxShadow: AppColors.cardShadow,
+                      color: AppColors.primary,
+                      borderRadius: BorderRadius.circular(18),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,7 +89,7 @@ class WalletScreen extends StatelessWidget {
                       onPressed: () {
                         SnackbarHelper.show(
                           context,
-                          'Permintaan withdraw sedang diproses (dummy)',
+                          'Permintaan penarikan sedang diproses.',
                         );
                       },
                       icon: const Icon(Icons.account_balance_wallet_outlined),

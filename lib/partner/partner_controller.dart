@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 
 import 'models/partner_driver.dart';
@@ -9,8 +11,10 @@ import 'dummy/partner_dummy_data.dart';
 class PartnerController extends ChangeNotifier {
   PartnerController() {
     _orderHistory = List<PartnerOrder>.from(PartnerDummyData.orderHistory);
-    _notifications = List<PartnerNotification>.from(PartnerDummyData.notifications);
-    _transactions = List<PartnerTransaction>.from(PartnerDummyData.transactions);
+    _notifications =
+        List<PartnerNotification>.from(PartnerDummyData.notifications);
+    _transactions =
+        List<PartnerTransaction>.from(PartnerDummyData.transactions);
     _startDashboardLoading();
   }
 
@@ -20,6 +24,7 @@ class PartnerController extends ChangeNotifier {
   bool _notificationsEnabled = true;
   bool _darkMode = false;
   String _language = 'Indonesia';
+  Timer? _dashboardTimer;
 
   PartnerDriver _driver = PartnerDummyData.driver;
   List<PartnerOrder> _incomingOrders = [];
@@ -40,8 +45,7 @@ class PartnerController extends ChangeNotifier {
   List<PartnerOrder> get orderHistory => List.unmodifiable(_orderHistory);
   List<PartnerNotification> get notifications =>
       List.unmodifiable(_notifications);
-  List<PartnerTransaction> get transactions =>
-      List.unmodifiable(_transactions);
+  List<PartnerTransaction> get transactions => List.unmodifiable(_transactions);
 
   int get unreadNotificationCount =>
       _notifications.where((n) => !n.isRead).length;
@@ -201,9 +205,16 @@ class PartnerController extends ChangeNotifier {
   }
 
   void _startDashboardLoading() {
-    Future.delayed(const Duration(milliseconds: 1200), () {
+    _dashboardTimer?.cancel();
+    _dashboardTimer = Timer(const Duration(milliseconds: 1200), () {
       _isDashboardLoading = false;
       notifyListeners();
     });
+  }
+
+  @override
+  void dispose() {
+    _dashboardTimer?.cancel();
+    super.dispose();
   }
 }

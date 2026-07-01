@@ -45,39 +45,53 @@ class MitraStatusScreen extends StatelessWidget {
                           children: [
                             Text(
                               DummyData.mitra.name,
-                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
                             const SizedBox(height: 8),
                             Row(
                               children: [
-                                const Icon(Icons.star_rounded, size: 16, color: Colors.amber),
+                                const Icon(Icons.star_rounded,
+                                    size: 16, color: Colors.amber),
                                 const SizedBox(width: 4),
                                 Text(
                                   '${DummyData.mitra.rating}',
-                                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 ),
                                 const SizedBox(width: 12),
-                                const Icon(Icons.check_circle_rounded, size: 16, color: Colors.green),
+                                const Icon(Icons.check_circle_rounded,
+                                    size: 16, color: Colors.green),
                                 const SizedBox(width: 4),
                                 Text(
                                   'Terverifikasi',
-                                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green,
-                                  ),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.green,
+                                      ),
                                 ),
                               ],
                             ),
                             const SizedBox(height: 8),
                             Text(
                               '${DummyData.mitra.finishedOrders} pesanan selesai',
-                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: Colors.grey[600],
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                    color: Colors.grey[600],
+                                  ),
                             ),
                           ],
                         ),
@@ -94,8 +108,8 @@ class MitraStatusScreen extends StatelessWidget {
           Text(
             'Status Ketersediaan',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+                  fontWeight: FontWeight.bold,
+                ),
           ),
           const SizedBox(height: 12),
 
@@ -116,16 +130,18 @@ class MitraStatusScreen extends StatelessWidget {
                       children: [
                         Text(
                           'Status Online',
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                         ),
                         const SizedBox(height: 4),
                         Text(
                           'Saat ini Anda siap menerima pesanan',
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Colors.grey[600],
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: Colors.grey[600],
+                                  ),
                         ),
                       ],
                     ),
@@ -141,8 +157,8 @@ class MitraStatusScreen extends StatelessWidget {
           Text(
             'Statistik Hari Ini',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+                  fontWeight: FontWeight.bold,
+                ),
           ),
           const SizedBox(height: 12),
 
@@ -214,8 +230,8 @@ class _StatusToggleState extends State<_StatusToggle> {
         padding: const EdgeInsets.symmetric(horizontal: 6),
         decoration: BoxDecoration(
           color: isOnline ? AppColors.primary : const Color(0xFF374151),
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: AppColors.cardShadow,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: AppColors.border),
         ),
         child: Stack(
           alignment: Alignment.center,
@@ -304,15 +320,15 @@ class _StatCard extends StatelessWidget {
           Text(
             value,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+                  fontWeight: FontWeight.bold,
+                ),
           ),
           const SizedBox(height: 4),
           Text(
             label,
             style: Theme.of(context).textTheme.labelSmall?.copyWith(
-              color: Colors.grey[600],
-            ),
+                  color: Colors.grey[600],
+                ),
           ),
         ],
       ),

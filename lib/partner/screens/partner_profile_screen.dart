@@ -45,7 +45,8 @@ class PartnerProfileScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.star_rounded, color: AppColors.warning, size: 18),
+                const Icon(Icons.star_rounded,
+                    color: AppColors.warning, size: 18),
                 const SizedBox(width: 4),
                 Text(
                   '${driver.rating} • ${driver.completedOrders} pesanan selesai',
@@ -108,7 +109,7 @@ class PartnerProfileScreen extends StatelessWidget {
                 },
                 icon: const Icon(Icons.logout_rounded, color: AppColors.danger),
                 label: const Text(
-                  'Logout',
+                  'Keluar',
                   style: TextStyle(
                     color: AppColors.danger,
                     fontWeight: FontWeight.w800,

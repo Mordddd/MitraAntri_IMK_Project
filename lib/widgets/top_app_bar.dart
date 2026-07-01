@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../core/app_colors.dart';
 
-<<<<<<< HEAD
 class TopAppBar extends PreferredSize {
   TopAppBar({
     super.key,
@@ -24,11 +23,6 @@ class _TopAppBarContent extends StatelessWidget {
     required this.showBack,
     this.actions,
   });
-=======
-class TopAppBar extends StatelessWidget {
-  const TopAppBar(
-      {super.key, required this.title, this.showBack = true, this.actions});
->>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 
   final String title;
   final bool showBack;

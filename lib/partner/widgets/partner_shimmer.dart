@@ -26,7 +26,29 @@ class _PartnerShimmerState extends State<PartnerShimmer>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1400),
-    )..repeat();
+    );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _syncAnimation();
+  }
+
+  @override
+  void didUpdateWidget(covariant PartnerShimmer oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _syncAnimation();
+  }
+
+  void _syncAnimation() {
+    final shouldAnimate =
+        widget.isLoading && !MediaQuery.disableAnimationsOf(context);
+    if (shouldAnimate && !_controller.isAnimating) {
+      _controller.repeat();
+    } else if (!shouldAnimate && _controller.isAnimating) {
+      _controller.stop();
+    }
   }
 
   @override

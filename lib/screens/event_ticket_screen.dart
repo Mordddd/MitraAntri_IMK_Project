@@ -75,16 +75,15 @@ class _EventTicketScreenState extends State<EventTicketScreen> {
                   _selectedEvent = event.id;
                   _selectedService = null;
                 }),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(18),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(18),
                     border: Border.all(
                       color: isSelected ? AppColors.primary : AppColors.border,
                       width: isSelected ? 2 : 1,
                     ),
-                    boxShadow: AppColors.cardShadow,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,8 +91,8 @@ class _EventTicketScreenState extends State<EventTicketScreen> {
                       Container(
                         height: 100,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF9C4DCC)
-                              .withValues(alpha: 0.15),
+                          color:
+                              const Color(0xFF9C4DCC).withValues(alpha: 0.15),
                           borderRadius: const BorderRadius.vertical(
                             top: Radius.circular(18),
                           ),
@@ -149,8 +148,7 @@ class _EventTicketScreenState extends State<EventTicketScreen> {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: InkWell(
-                  onTap: () =>
-                      setState(() => _selectedService = service.id),
+                  onTap: () => setState(() => _selectedService = service.id),
                   borderRadius: BorderRadius.circular(16),
                   child: Container(
                     padding: const EdgeInsets.all(16),
@@ -169,8 +167,7 @@ class _EventTicketScreenState extends State<EventTicketScreen> {
                         Expanded(
                           child: Text(
                             _serviceLabel(service.type),
-                            style:
-                                const TextStyle(fontWeight: FontWeight.w800),
+                            style: const TextStyle(fontWeight: FontWeight.w800),
                           ),
                         ),
                         if (isSelected)

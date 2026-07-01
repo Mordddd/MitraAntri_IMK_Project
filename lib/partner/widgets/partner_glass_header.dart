@@ -17,20 +17,12 @@ class PartnerGlassHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-      padding: const EdgeInsets.all(18),
+      margin: const EdgeInsets.fromLTRB(16, 4, 16, 0),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Colors.white.withValues(alpha: 0.95),
-            Colors.white.withValues(alpha: 0.82),
-          ],
-        ),
-        borderRadius: BorderRadius.circular(28),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.8)),
-        boxShadow: AppColors.cardShadow,
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: AppColors.border),
       ),
       child: Column(
         children: [
@@ -109,8 +101,8 @@ class PartnerGlassHeader extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              gradient: AppColors.primaryGradient(),
-              borderRadius: BorderRadius.circular(20),
+              color: AppColors.primary,
+              borderRadius: BorderRadius.circular(16),
             ),
             child: Row(
               children: [

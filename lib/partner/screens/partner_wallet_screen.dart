@@ -25,8 +25,8 @@ class PartnerWalletScreen extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                gradient: AppColors.primaryGradient(),
-                borderRadius: BorderRadius.circular(28),
+                color: AppColors.primary,
+                borderRadius: BorderRadius.circular(18),
                 boxShadow: [
                   BoxShadow(
                     color: AppColors.primary.withValues(alpha: 0.3),
@@ -84,7 +84,7 @@ class PartnerWalletScreen extends StatelessWidget {
                   partner.withdraw();
                   SnackbarHelper.show(
                     context,
-                    'Permintaan penarikan Rp 200.000 diajukan (dummy)',
+                    'Permintaan penarikan Rp 200.000 diajukan.',
                   );
                 },
                 icon: const Icon(Icons.account_balance_rounded),
@@ -126,15 +126,17 @@ class PartnerWalletScreen extends StatelessWidget {
                       width: 42,
                       height: 42,
                       decoration: BoxDecoration(
-                        color: (tx.isCredit ? AppColors.success : AppColors.danger)
-                            .withValues(alpha: 0.12),
+                        color:
+                            (tx.isCredit ? AppColors.success : AppColors.danger)
+                                .withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(14),
                       ),
                       child: Icon(
                         tx.isCredit
                             ? Icons.arrow_downward_rounded
                             : Icons.arrow_upward_rounded,
-                        color: tx.isCredit ? AppColors.success : AppColors.danger,
+                        color:
+                            tx.isCredit ? AppColors.success : AppColors.danger,
                       ),
                     ),
                     const SizedBox(width: 12),
@@ -164,7 +166,8 @@ class PartnerWalletScreen extends StatelessWidget {
                       '${tx.isCredit ? '+' : '-'}${CurrencyFormatter.rupiah(tx.amount)}',
                       style: TextStyle(
                         fontWeight: FontWeight.w900,
-                        color: tx.isCredit ? AppColors.success : AppColors.danger,
+                        color:
+                            tx.isCredit ? AppColors.success : AppColors.danger,
                       ),
                     ),
                   ],

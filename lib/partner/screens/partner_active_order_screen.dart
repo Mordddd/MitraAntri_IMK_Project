@@ -40,8 +40,8 @@ class PartnerActiveOrderScreen extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                gradient: AppColors.primaryGradient(),
-                borderRadius: BorderRadius.circular(24),
+                color: AppColors.primary,
+                borderRadius: BorderRadius.circular(18),
                 boxShadow: [
                   BoxShadow(
                     color: AppColors.primary.withValues(alpha: 0.3),
@@ -149,7 +149,7 @@ class PartnerActiveOrderScreen extends StatelessWidget {
               color: AppColors.blue,
               onTap: () => SnackbarHelper.show(
                 context,
-                'Membuka Google Maps (dummy)...',
+                'Fitur peta belum terhubung.',
               ),
             ),
             const SizedBox(height: 10),
@@ -159,7 +159,7 @@ class PartnerActiveOrderScreen extends StatelessWidget {
               color: AppColors.navy,
               onTap: () => SnackbarHelper.show(
                 context,
-                'Menghubungi ${order.customerPhone} (dummy)...',
+                'Fitur panggilan belum terhubung.',
               ),
             ),
             const SizedBox(height: 10),
@@ -169,7 +169,7 @@ class PartnerActiveOrderScreen extends StatelessWidget {
               color: const Color(0xFF25D366),
               onTap: () => SnackbarHelper.show(
                 context,
-                'Membuka WhatsApp ke ${order.customerName} (dummy)...',
+                'Fitur WhatsApp belum terhubung.',
               ),
             ),
             const SizedBox(height: 20),
@@ -221,9 +221,8 @@ class _DetailCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(18),
         border: Border.all(color: AppColors.border),
-        boxShadow: AppColors.cardShadow,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

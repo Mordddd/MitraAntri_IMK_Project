@@ -1,15 +1,11 @@
 class Mitra {
   const Mitra({
-<<<<<<< HEAD
     required this.id,
-=======
->>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
     required this.name,
     required this.rating,
     required this.finishedOrders,
     required this.distanceKm,
     required this.verified,
-<<<<<<< HEAD
     required this.photoUrl,
     this.isOnline = false,
     this.phone = '',
@@ -17,16 +13,11 @@ class Mitra {
   });
 
   final String id;
-=======
-  });
-
->>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
   final String name;
   final double rating;
   final int finishedOrders;
   final double distanceKm;
   final bool verified;
-<<<<<<< HEAD
   final String photoUrl;
   final bool isOnline;
   final String phone;
@@ -57,6 +48,4 @@ class Mitra {
       vehicleNumber: vehicleNumber ?? this.vehicleNumber,
     );
   }
-=======
->>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 }

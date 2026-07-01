@@ -43,8 +43,8 @@ class ProfileScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(24),
-                          boxShadow: AppColors.cardShadow,
+                          borderRadius: BorderRadius.circular(18),
+                          border: Border.all(color: AppColors.border),
                         ),
                         child: Column(
                           children: [
@@ -82,13 +82,15 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       _ProfileTile(
                         icon: Icons.phone_outlined,
-                        label: 'Phone',
+                        label: 'Nomor telepon',
                         value: user.phone,
                       ),
                       _ProfileTile(
                         icon: Icons.verified_user_outlined,
                         label: 'Status',
-                        value: user.verified ? 'Terverifikasi' : 'Belum verifikasi',
+                        value: user.verified
+                            ? 'Terverifikasi'
+                            : 'Belum verifikasi',
                       ),
                       const SizedBox(height: 24),
                       SizedBox(
@@ -104,7 +106,7 @@ class ProfileScreen extends StatelessWidget {
                           icon: const Icon(Icons.logout_rounded,
                               color: AppColors.danger),
                           label: const Text(
-                            'Logout',
+                            'Keluar',
                             style: TextStyle(
                               color: AppColors.danger,
                               fontWeight: FontWeight.w800,

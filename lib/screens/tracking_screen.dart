@@ -46,7 +46,7 @@ class TrackingScreen extends StatelessWidget {
                       const SizedBox(height: 16),
                       AppCard(
                         padding: const EdgeInsets.all(20),
-                        radius: 30,
+                        radius: 18,
                         child: Column(
                           children: [
                             const Text('Nomor Antrean Anda',
@@ -60,7 +60,7 @@ class TrackingScreen extends StatelessWidget {
                                   horizontal: 26, vertical: 15),
                               decoration: BoxDecoration(
                                 color: AppColors.mint,
-                                borderRadius: BorderRadius.circular(24),
+                                borderRadius: BorderRadius.circular(16),
                                 border: Border.all(
                                     color:
                                         AppColors.teal.withValues(alpha: .15)),

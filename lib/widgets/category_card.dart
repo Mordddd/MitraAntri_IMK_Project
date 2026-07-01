@@ -13,52 +13,34 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppCard(
       onTap: onTap,
-      padding: const EdgeInsets.all(12),
-      radius: 20,
+      padding: const EdgeInsets.all(14),
+      radius: 16,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-<<<<<<< HEAD
-          if (category.emoji.isNotEmpty)
-            Text(
-              category.emoji,
-              style: const TextStyle(fontSize: 28),
-            )
-          else
-            Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: category.color.withValues(alpha: .12),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Icon(category.icon, color: category.color, size: 23),
-            ),
-=======
           Container(
             width: 42,
             height: 42,
             decoration: BoxDecoration(
-              color: category.color.withValues(alpha: .12),
-              borderRadius: BorderRadius.circular(15),
+              color: AppColors.mint,
+              borderRadius: BorderRadius.circular(14),
             ),
-            child: Icon(category.icon, color: category.color, size: 23),
+            child: Icon(category.icon, color: AppColors.primary, size: 22),
           ),
->>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
           const Spacer(),
           Text(
             category.title,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w800,
                 color: AppColors.navy,
-                fontSize: 13),
+                fontSize: 13.5),
           ),
           const SizedBox(height: 3),
           Text(
             category.subtitle,
-            maxLines: 2,
+            maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
                 color: AppColors.subtext, fontSize: 10.5, height: 1.2),

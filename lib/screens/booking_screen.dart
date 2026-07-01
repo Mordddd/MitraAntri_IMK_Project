@@ -41,11 +41,7 @@ class _BookingScreenState extends State<BookingScreen> {
         child: SafeArea(
           child: Column(
             children: [
-<<<<<<< HEAD
               TopAppBar(title: 'Pesan Mitra'),
-=======
-              const TopAppBar(title: 'Pesan Mitra'),
->>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
@@ -54,7 +50,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     children: [
                       AppCard(
                         padding: const EdgeInsets.all(18),
-                        radius: 28,
+                        radius: 18,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -64,8 +60,8 @@ class _BookingScreenState extends State<BookingScreen> {
                                   width: 50,
                                   height: 50,
                                   decoration: BoxDecoration(
-                                    gradient: AppColors.primaryGradient(),
-                                    borderRadius: BorderRadius.circular(18),
+                                    color: AppColors.primary,
+                                    borderRadius: BorderRadius.circular(14),
                                   ),
                                   child: const Icon(Icons.edit_calendar_rounded,
                                       color: Colors.white),
@@ -178,7 +174,7 @@ class _BookingScreenState extends State<BookingScreen> {
                         ),
                       ),
                       const SizedBox(height: 18),
-                      const SectionHeader(title: 'Estimasi Budget'),
+                      const SectionHeader(title: 'Estimasi Biaya'),
                       const SizedBox(height: 12),
                       AppCard(
                         padding: const EdgeInsets.all(16),

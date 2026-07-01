@@ -103,7 +103,8 @@ class PartnerHomeScreen extends StatelessWidget {
                                 vertical: 4,
                               ),
                               decoration: BoxDecoration(
-                                color: AppColors.primary.withValues(alpha: 0.12),
+                                color:
+                                    AppColors.primary.withValues(alpha: 0.12),
                                 borderRadius: BorderRadius.circular(99),
                               ),
                               child: Text(
@@ -132,7 +133,7 @@ class PartnerHomeScreen extends StatelessWidget {
                     title: 'Anda sedang OFFLINE',
                     subtitle:
                         'Aktifkan mode ONLINE untuk menerima pesanan masuk dari pelanggan.',
-                    actionLabel: 'Go ONLINE',
+                    actionLabel: 'Aktifkan mode online',
                     onAction: () => partner.setOnline(true),
                   ),
                 )
@@ -210,7 +211,8 @@ class PartnerHomeScreen extends StatelessWidget {
                             ),
                             PartnerStatCard(
                               title: 'Pendapatan',
-                              value: CurrencyFormatter.rupiah(driver.todayIncome),
+                              value:
+                                  CurrencyFormatter.rupiah(driver.todayIncome),
                               icon: Icons.payments_rounded,
                               color: AppColors.warning,
                             ),
@@ -258,15 +260,8 @@ class _ActiveOrderBanner extends StatelessWidget {
         duration: const Duration(milliseconds: 300),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          gradient: AppColors.primaryGradient(),
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.primary.withValues(alpha: 0.3),
-              blurRadius: 16,
-              offset: const Offset(0, 8),
-            ),
-          ],
+          color: AppColors.primary,
+          borderRadius: BorderRadius.circular(16),
         ),
         child: Row(
           children: [

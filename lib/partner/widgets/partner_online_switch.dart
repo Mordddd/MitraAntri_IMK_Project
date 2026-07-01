@@ -20,7 +20,7 @@ class PartnerOnlineSwitch extends StatelessWidget {
         color: isOnline
             ? AppColors.primary.withValues(alpha: 0.12)
             : AppColors.lightGrey,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(18),
         border: Border.all(
           color: isOnline ? AppColors.primary : AppColors.border,
           width: 1.5,

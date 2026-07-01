@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import '../core/app_colors.dart';
 
-class AppCard extends StatelessWidget {
+class AppCard extends StatefulWidget {
   const AppCard({
     super.key,
     required this.child,
     this.padding = const EdgeInsets.all(16),
     this.margin,
     this.color = Colors.white,
-    this.radius = 24,
+    this.radius = 18,
     this.onTap,
     this.borderColor,
   });
@@ -22,30 +22,44 @@ class AppCard extends StatelessWidget {
   final Color? borderColor;
 
   @override
+  State<AppCard> createState() => _AppCardState();
+}
+
+class _AppCardState extends State<AppCard> {
+  bool _pressed = false;
+
+  @override
   Widget build(BuildContext context) {
-    final content = Container(
-      margin: margin,
-      padding: padding,
+    final reduceMotion = MediaQuery.disableAnimationsOf(context);
+    final content = AnimatedContainer(
+      duration:
+          reduceMotion ? Duration.zero : const Duration(milliseconds: 180),
+      curve: Curves.easeOutCubic,
+      margin: widget.margin,
+      padding: widget.padding,
       decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(radius),
-        border: Border.all(color: borderColor ?? AppColors.border),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.navy.withValues(alpha: 0.06),
-            blurRadius: 22,
-            offset: const Offset(0, 10),
-          ),
-        ],
+        color: widget.color,
+        borderRadius: BorderRadius.circular(widget.radius),
+        border: Border.all(color: widget.borderColor ?? AppColors.border),
       ),
-      child: child,
+      child: widget.child,
     );
 
-    if (onTap == null) return content;
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(radius),
-      child: content,
+    if (widget.onTap == null) return content;
+    return AnimatedScale(
+      scale: _pressed && !reduceMotion ? 0.985 : 1,
+      duration:
+          reduceMotion ? Duration.zero : const Duration(milliseconds: 120),
+      curve: Curves.easeOut,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: widget.onTap,
+          onHighlightChanged: (value) => setState(() => _pressed = value),
+          borderRadius: BorderRadius.circular(widget.radius),
+          child: content,
+        ),
+      ),
     );
   }
 }

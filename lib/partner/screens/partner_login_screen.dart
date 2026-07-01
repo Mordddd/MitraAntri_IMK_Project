@@ -46,7 +46,7 @@ class _PartnerLoginScreenState extends State<PartnerLoginScreen>
 
   Future<void> _handleLogin(Future<bool> Function() action) async {
     setState(() => _isLoading = true);
-    await Future.delayed(const Duration(milliseconds: 700));
+    await Future.delayed(const Duration(milliseconds: 350));
     if (!mounted) return;
 
     final success = await action();
@@ -204,7 +204,7 @@ class _PartnerLoginScreenState extends State<PartnerLoginScreen>
                                 return partner.loginWithGoogle();
                               }),
                       icon: const Icon(Icons.g_mobiledata_rounded, size: 28),
-                      label: const Text('Login with Google'),
+                      label: const Text('Masuk dengan Google'),
                       style: OutlinedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(

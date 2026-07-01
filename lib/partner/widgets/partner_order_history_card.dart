@@ -29,8 +29,18 @@ class PartnerOrderHistoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final d = order.date;
     final months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun',
-      'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des',
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'Mei',
+      'Jun',
+      'Jul',
+      'Agu',
+      'Sep',
+      'Okt',
+      'Nov',
+      'Des',
     ];
     final dateStr =
         '${d.day.toString().padLeft(2, '0')} ${months[d.month - 1]} ${d.year}, '
@@ -38,15 +48,14 @@ class PartnerOrderHistoryCard extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(22),
+      borderRadius: BorderRadius.circular(18),
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(18),
           border: Border.all(color: AppColors.border),
-          boxShadow: AppColors.cardShadow,
         ),
         child: Row(
           children: [

@@ -3,6 +3,7 @@ import '../app/app_controller.dart';
 import '../app/app_scope.dart';
 import '../core/app_colors.dart';
 import '../core/app_routes.dart';
+import '../utils/currency_formatter.dart';
 import '../widgets/app_card.dart';
 import '../widgets/gradient_background.dart';
 import '../widgets/order_header_card.dart';
@@ -24,11 +25,7 @@ class PaymentScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-<<<<<<< HEAD
               TopAppBar(title: 'Detail Pesanan'),
-=======
-              const TopAppBar(title: 'Detail Pesanan'),
->>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
@@ -53,22 +50,28 @@ class PaymentScreen extends StatelessWidget {
                       const SizedBox(height: 16),
                       const SectionHeader(title: 'Rincian Biaya'),
                       const SizedBox(height: 12),
-                      const AppCard(
-                        padding: EdgeInsets.all(16),
+                      AppCard(
+                        padding: const EdgeInsets.all(16),
                         child: Column(
                           children: [
                             _SummaryRow(
-                                label: 'Jasa Layanan', value: 'Rp 90.000'),
+                              label: 'Jasa dan biaya layanan',
+                              value: CurrencyFormatter.rupiah(
+                                order.totalPayment - 5000,
+                              ),
+                            ),
+                            const _SummaryRow(
+                              label: 'Biaya platform',
+                              value: 'Rp 5.000',
+                            ),
+                            const Divider(height: 22, color: AppColors.border),
                             _SummaryRow(
-                                label: 'Biaya Tambahan', value: 'Rp 10.000'),
-                            _SummaryRow(label: 'Subtotal', value: 'Rp 100.000'),
-                            _SummaryRow(
-                                label: 'Biaya Platform', value: 'Rp 5.000'),
-                            Divider(height: 22, color: AppColors.border),
-                            _SummaryRow(
-                                label: 'Total Pembayaran',
-                                value: 'Rp 105.000',
-                                bold: true),
+                              label: 'Total pembayaran',
+                              value: CurrencyFormatter.rupiah(
+                                order.totalPayment,
+                              ),
+                              bold: true,
+                            ),
                           ],
                         ),
                       ),
@@ -77,7 +80,8 @@ class PaymentScreen extends StatelessWidget {
                       const SizedBox(height: 12),
                       PaymentOption(
                         title: 'Saldo Mitra Antri',
-                        subtitle: 'Saldo tersedia: Rp 150.000',
+                        subtitle:
+                            'Saldo tersedia: ${CurrencyFormatter.rupiah(app.wallet.balance)}',
                         icon: Icons.account_balance_wallet_rounded,
                         selected: app.paymentMethod == PaymentMethod.balance,
                         onTap: () =>
@@ -142,7 +146,9 @@ class PaymentScreen extends StatelessWidget {
   Future<void> _confirmPayment(BuildContext context, AppController app) async {
     if (!app.pay()) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Pesanan harus selesai sebelum dibayar.')),
+        SnackBar(
+          content: Text(app.paymentBlockReason ?? 'Pembayaran gagal diproses.'),
+        ),
       );
       return;
     }

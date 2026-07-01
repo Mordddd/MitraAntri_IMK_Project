@@ -41,7 +41,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
               width: double.infinity,
               decoration: BoxDecoration(
                 color: AppColors.primary.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(18),
               ),
               child: const Icon(
                 Icons.local_hospital_rounded,

@@ -35,9 +35,8 @@ class PartnerIncomingOrderCard extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(18),
           border: Border.all(color: AppColors.border),
-          boxShadow: AppColors.cardShadow,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +44,7 @@ class PartnerIncomingOrderCard extends StatelessWidget {
             Row(
               children: [
                 CircleAvatar(
-                  radius: 24,
+                  radius: 22,
                   backgroundColor: category.color.withValues(alpha: 0.15),
                   child: Icon(category.icon, color: category.color, size: 22),
                 ),

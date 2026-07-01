@@ -18,11 +18,19 @@ class PartnerShellScreen extends StatefulWidget {
 
 class _PartnerShellScreenState extends State<PartnerShellScreen> {
   late int _currentIndex;
+  late final PageController _pageController;
 
   @override
   void initState() {
     super.initState();
-    _currentIndex = widget.initialIndex;
+    _currentIndex = widget.initialIndex.clamp(0, 4);
+    _pageController = PageController(initialPage: _currentIndex);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -36,13 +44,26 @@ class _PartnerShellScreenState extends State<PartnerShellScreen> {
     ];
 
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
+      body: PageView(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        onPageChanged: (index) => setState(() => _currentIndex = index),
         children: screens,
       ),
       bottomNavigationBar: PartnerBottomNav(
         currentIndex: _currentIndex,
-        onTap: (index) => setState(() => _currentIndex = index),
+        onTap: (index) {
+          if (index == _currentIndex) return;
+          if (MediaQuery.disableAnimationsOf(context)) {
+            _pageController.jumpToPage(index);
+            return;
+          }
+          _pageController.animateToPage(
+            index,
+            duration: const Duration(milliseconds: 320),
+            curve: Curves.easeOutCubic,
+          );
+        },
       ),
     );
   }

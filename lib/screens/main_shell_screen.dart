@@ -18,25 +18,35 @@ class MainShellScreen extends StatefulWidget {
 
 class _MainShellScreenState extends State<MainShellScreen> {
   late int _currentIndex;
+  late final PageController _pageController;
 
   @override
   void initState() {
     super.initState();
-    _currentIndex = widget.initialIndex;
+    _currentIndex = widget.initialIndex.clamp(0, _tabs.length - 1);
+    _pageController = PageController(initialPage: _currentIndex);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   static const _tabs = [
-    BottomNavItem(icon: Icons.home_rounded, label: 'Home'),
-    BottomNavItem(icon: Icons.receipt_long_rounded, label: 'Orders'),
-    BottomNavItem(icon: Icons.account_balance_wallet_rounded, label: 'Wallet'),
-    BottomNavItem(icon: Icons.person_rounded, label: 'Profile'),
+    BottomNavItem(icon: Icons.home_rounded, label: 'Beranda'),
+    BottomNavItem(icon: Icons.receipt_long_rounded, label: 'Pesanan'),
+    BottomNavItem(icon: Icons.account_balance_wallet_rounded, label: 'Dompet'),
+    BottomNavItem(icon: Icons.person_rounded, label: 'Profil'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
+      body: PageView(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        onPageChanged: (index) => setState(() => _currentIndex = index),
         children: const [
           HomeScreen(),
           OrderHistoryScreen(showBackButton: false),
@@ -47,7 +57,18 @@ class _MainShellScreenState extends State<MainShellScreen> {
       bottomNavigationBar: MockBottomNav(
         currentIndex: _currentIndex,
         items: _tabs,
-        onTap: (index) => setState(() => _currentIndex = index),
+        onTap: (index) {
+          if (index == _currentIndex) return;
+          if (MediaQuery.disableAnimationsOf(context)) {
+            _pageController.jumpToPage(index);
+            return;
+          }
+          _pageController.animateToPage(
+            index,
+            duration: const Duration(milliseconds: 320),
+            curve: Curves.easeOutCubic,
+          );
+        },
       ),
     );
   }

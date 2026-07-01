@@ -1,11 +1,8 @@
 import 'package:flutter/foundation.dart';
 
 import '../models/order.dart';
-<<<<<<< HEAD
 import '../models/wallet.dart';
 import '../dummy/dummy_data.dart';
-=======
->>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 
 enum AppRole { customer, partner }
 
@@ -23,42 +20,42 @@ enum OrderStatus {
 enum PaymentMethod { balance, bankTransfer, qris }
 
 class AppController extends ChangeNotifier {
-<<<<<<< HEAD
   AppController({
     required QueueOrder initialOrder,
     Wallet? wallet,
   })  : _order = initialOrder,
         _wallet = wallet ?? DummyData.wallet,
         _orderStatus = OrderStatus.assigned;
-=======
-  AppController({required QueueOrder initialOrder}) : _order = initialOrder;
->>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 
   AppRole _role = AppRole.customer;
   OrderStatus _orderStatus = OrderStatus.draft;
   PaymentMethod _paymentMethod = PaymentMethod.balance;
   QueueOrder _order;
-<<<<<<< HEAD
   Wallet _wallet;
   bool _isOnline = false;
-=======
->>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 
   AppRole get role => _role;
   OrderStatus get orderStatus => _orderStatus;
   PaymentMethod get paymentMethod => _paymentMethod;
   QueueOrder get order => _order;
-<<<<<<< HEAD
   Wallet get wallet => _wallet;
   bool get isOnline => _isOnline;
-=======
->>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 
   bool get hasOrder =>
       _orderStatus != OrderStatus.draft &&
       _orderStatus != OrderStatus.cancelled;
 
   bool get canPay => _orderStatus == OrderStatus.completed;
+
+  bool get hasSufficientBalance =>
+      _paymentMethod != PaymentMethod.balance ||
+      _wallet.balance >= _order.totalPayment;
+
+  String? get paymentBlockReason {
+    if (!canPay) return 'Pesanan harus selesai sebelum dibayar.';
+    if (!hasSufficientBalance) return 'Saldo tidak cukup untuk pembayaran ini.';
+    return null;
+  }
 
   int get trackingStep {
     return switch (_orderStatus) {
@@ -135,15 +132,13 @@ class AppController extends ChangeNotifier {
   }
 
   bool pay() {
-    if (!canPay) return false;
+    if (paymentBlockReason != null) return false;
     _orderStatus = OrderStatus.paid;
-<<<<<<< HEAD
-    // Deduct from wallet
-    _wallet = _wallet.copyWith(
-      balance: _wallet.balance - _order.totalPayment,
-    );
-=======
->>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
+    if (_paymentMethod == PaymentMethod.balance) {
+      _wallet = _wallet.copyWith(
+        balance: _wallet.balance - _order.totalPayment,
+      );
+    }
     notifyListeners();
     return true;
   }
@@ -152,7 +147,6 @@ class AppController extends ChangeNotifier {
     _orderStatus = OrderStatus.draft;
     notifyListeners();
   }
-<<<<<<< HEAD
 
   void toggleOnlineStatus() {
     _isOnline = !_isOnline;
@@ -165,6 +159,7 @@ class AppController extends ChangeNotifier {
   }
 
   void addWalletBalance(int amount) {
+    if (amount <= 0) return;
     _wallet = _wallet.copyWith(
       balance: _wallet.balance + amount,
       totalEarned: _wallet.totalEarned + amount,
@@ -173,13 +168,11 @@ class AppController extends ChangeNotifier {
   }
 
   void deductWalletBalance(int amount) {
-    if (_wallet.balance >= amount) {
+    if (amount > 0 && _wallet.balance >= amount) {
       _wallet = _wallet.copyWith(
         balance: _wallet.balance - amount,
       );
       notifyListeners();
     }
   }
-=======
->>>>>>> e779af82024cf7b88993b7a681383685aaa57ba5
 }

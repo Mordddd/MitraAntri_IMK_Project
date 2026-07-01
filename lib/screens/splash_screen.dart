@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../core/app_colors.dart';
 import '../core/app_routes.dart';
+import '../widgets/app_logo.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -21,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1200),
+      duration: const Duration(milliseconds: 600),
     );
     _fadeAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeIn);
     _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen>
     );
     _controller.forward();
 
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(milliseconds: 900), () {
       if (mounted) {
         Navigator.pushReplacementNamed(context, AppRoutes.login);
       }
@@ -45,20 +46,8 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              AppColors.primary,
-              AppColors.primary.withValues(alpha: 0.85),
-              Colors.white,
-            ],
-            stops: const [0.0, 0.55, 1.0],
-          ),
-        ),
+      body: ColoredBox(
+        color: AppColors.bg,
         child: SafeArea(
           child: FadeTransition(
             opacity: _fadeAnimation,
@@ -67,46 +56,25 @@ class _SplashScreenState extends State<SplashScreen>
               children: [
                 ScaleTransition(
                   scale: _scaleAnimation,
-                  child: Container(
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: AppColors.cardShadow,
-                    ),
-                    child: const Icon(
-                      Icons.groups_rounded,
-                      size: 56,
-                      color: AppColors.primary,
-                    ),
-                  ),
+                  child: const AppLogo(),
                 ),
-                const SizedBox(height: 28),
+                const SizedBox(height: 18),
                 const Text(
-                  'MitraAntri',
+                  'Antre lebih mudah, waktu tetap milik Anda.',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.white,
-                    letterSpacing: -0.5,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Partner antre & errand terpercaya',
-                  style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 13,
                     fontWeight: FontWeight.w600,
-                    color: Colors.white.withValues(alpha: 0.9),
+                    color: AppColors.subtext,
                   ),
                 ),
-                const SizedBox(height: 48),
+                const SizedBox(height: 36),
                 SizedBox(
-                  width: 36,
-                  height: 36,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 3,
-                    color: Colors.white.withValues(alpha: 0.9),
+                  width: 28,
+                  height: 28,
+                  child: const CircularProgressIndicator(
+                    strokeWidth: 2.5,
+                    color: AppColors.primary,
                   ),
                 ),
               ],

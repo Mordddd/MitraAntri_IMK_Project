@@ -30,43 +30,31 @@ class PartnerSettingsScreen extends StatelessWidget {
                 onChanged: partner.setNotificationsEnabled,
               ),
               const Divider(height: 1),
-              SwitchListTile(
-                title: const Text(
+              const SwitchListTile(
+                title: Text(
                   'Mode Gelap',
                   style: TextStyle(fontWeight: FontWeight.w800),
                 ),
-                subtitle: const Text('Tampilan tema gelap (dummy)'),
-                value: partner.darkMode,
+                subtitle: Text('Segera hadir'),
+                value: false,
                 activeThumbColor: AppColors.primary,
-                onChanged: partner.setDarkMode,
+                onChanged: null,
               ),
             ],
           ),
           const SizedBox(height: 12),
-          _SettingsCard(
+          const _SettingsCard(
             children: [
               ListTile(
-                leading: const Icon(Icons.language_rounded),
-                title: const Text(
+                leading: Icon(Icons.language_rounded),
+                title: Text(
                   'Bahasa',
                   style: TextStyle(fontWeight: FontWeight.w800),
                 ),
-                trailing: DropdownButton<String>(
-                  value: partner.language,
-                  underline: const SizedBox.shrink(),
-                  items: const [
-                    DropdownMenuItem(
-                      value: 'Indonesia',
-                      child: Text('Indonesia'),
-                    ),
-                    DropdownMenuItem(
-                      value: 'English',
-                      child: Text('English'),
-                    ),
-                  ],
-                  onChanged: (v) {
-                    if (v != null) partner.setLanguage(v);
-                  },
+                subtitle: Text('Pilihan bahasa lain segera hadir'),
+                trailing: Text(
+                  'Indonesia',
+                  style: TextStyle(fontWeight: FontWeight.w800),
                 ),
               ),
             ],
@@ -79,7 +67,7 @@ class PartnerSettingsScreen extends StatelessWidget {
                 label: 'Pusat Bantuan',
                 onTap: () => SnackbarHelper.show(
                   context,
-                  'Pusat Bantuan MitraAntri (dummy)',
+                  'Pusat bantuan belum tersedia.',
                 ),
               ),
               const Divider(height: 1),
@@ -88,7 +76,7 @@ class PartnerSettingsScreen extends StatelessWidget {
                 label: 'Kebijakan Privasi',
                 onTap: () => SnackbarHelper.show(
                   context,
-                  'Kebijakan Privasi (dummy)',
+                  'Kebijakan privasi belum tersedia.',
                 ),
               ),
               const Divider(height: 1),
@@ -118,7 +106,7 @@ class _SettingsCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(18),
         border: Border.all(color: AppColors.border),
       ),
       child: Column(children: children),

@@ -13,7 +13,7 @@ class OrderHeaderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppCard(
       padding: const EdgeInsets.all(14),
-      radius: 22,
+      radius: 18,
       child: Row(
         children: [
           Expanded(
